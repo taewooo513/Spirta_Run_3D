@@ -37,7 +37,9 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator GetSpeedItemBuff(float maxTime)
     {
+        isInv = true;
         yield return new WaitForSeconds(maxTime);
+        isInv = false;
     }
     public void GetSpeedUpItem(float val, float maxTime)
     {
