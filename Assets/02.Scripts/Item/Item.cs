@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Item : MonoBehaviour
+public partial class Item : MonoBehaviour
 {
     public UnityEvent useItemAction; //아이템 사용시 호출하는 함수
 
