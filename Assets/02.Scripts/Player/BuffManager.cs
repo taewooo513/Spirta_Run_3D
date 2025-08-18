@@ -20,7 +20,7 @@ public class BuffManager : MonoBehaviour
     private IEnumerator SpeedBoostCoroutine(float multiplier, float duration)
     {
         // GameManager를 통해 현재 맵의 정보를 가져옵니다.
-        Map currentMap = GameManager.Instance.map;
+        Map currentMap = GameManager.Instance.map[0];
 
         if (currentMap == null)
         {
@@ -40,7 +40,7 @@ public class BuffManager : MonoBehaviour
         // 맵의 속도를 원래대로 복구합니다.
         if (GameManager.Instance.map != null)
         {
-            GameManager.Instance.map.speed = originalSpeed;
+            GameManager.Instance.map[0].speed = originalSpeed;
         }
     }
 }
