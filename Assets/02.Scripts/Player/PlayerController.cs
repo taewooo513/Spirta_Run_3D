@@ -79,4 +79,19 @@ public class PlayerController : MonoBehaviour
         capsuleCollider.height = originalColliderHeight;
         capsuleCollider.center = originalColliderCenter;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //Item 태그로 충돌 판정
+        if (other.CompareTag("Item")) 
+        {
+            Item item = other.GetComponent<Item>();
+            if (item != null)
+            {
+                BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
+
+                item.GetItem();
+                Debug.Log("스피드업 아이템 획득");
+            }
+        }
+    }
 }
