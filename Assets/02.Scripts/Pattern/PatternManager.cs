@@ -14,7 +14,7 @@ public class PatternManager : Singleton<PatternManager>
     {
         patternQueue = new Queue<GameObject>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) // º¯¼ö·Î 10
         {
             AddPattern();
         }
