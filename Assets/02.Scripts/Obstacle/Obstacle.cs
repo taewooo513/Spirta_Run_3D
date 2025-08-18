@@ -15,6 +15,7 @@ public class Obstacle : MonoBehaviour
 
     private void Movement()
     {
-        transform.position += Direction * (speed + GameManager.Instance.map.speed) * Time.deltaTime;
+        Debug.Log(GameManager.Instance.map.speed);
+        transform.position += Direction * (speed - GameManager.Instance.map.speed) * Time.deltaTime;
     }
 }
