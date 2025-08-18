@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     public Map map;
     public float playDistance; // 진행 거리
     bool isInv;
+    float score;
     public void InitGame()
     {
     }
