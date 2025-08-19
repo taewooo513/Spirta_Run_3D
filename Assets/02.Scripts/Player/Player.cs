@@ -3,8 +3,15 @@ public class Player : MonoBehaviour
 {
     public UIManager uiManager;
 
-    public int maxHealth = 3; 
+    public int maxHealth = 3;
     private int currentHealth;
+
+    [Header("PlayerModel")]
+    public SkinnedMeshRenderer hair;
+    public SkinnedMeshRenderer hair1;
+    public SkinnedMeshRenderer hair2;
+    public SkinnedMeshRenderer clothes;
+
 
     void Start()
     {

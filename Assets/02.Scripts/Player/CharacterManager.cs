@@ -5,6 +5,25 @@ using UnityEngine;
 public class CharacterManager : Singleton<CharacterManager>
 {
     public Player player;
-
-    //CharacterManager -> 싱글턴 상속 및 player 갖다 쓰기.
+    Material hairMaterial;
+    Material clothesMaterial;
+    public void SetColorHair(string colorCode)
+    {
+        if (ColorUtility.TryParseHtmlString(colorCode, out Color color))
+        {
+            player.hair.material.SetColor("_BaseColor", color);
+            player.hair1.material.SetColor("_BaseColor", color);
+            player.hair2.material.SetColor("_BaseColor", color);
+        }
+        hairMaterial = player.hair.material;
+    }
+    public void SetColorClothes(string colorCode)
+    {
+        if (ColorUtility.TryParseHtmlString(colorCode, out Color color))
+        {
+            player.clothes.material.SetColor("_BaseColor", color);
+        }
+        clothesMaterial = player.clothes.material;
+    }
 }
+
