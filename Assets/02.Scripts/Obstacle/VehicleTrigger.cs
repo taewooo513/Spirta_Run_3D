@@ -8,7 +8,8 @@ public class VehicleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // 이 곳에 플레이어가 트리거에 들어왔을 때의 행동을 정의해주세요!
+            CharacterManager.Instance.player.TakeDamage(1);
+            AudioManager.Instance.PlayCarCrashSound();
             Destroy(this.transform.parent.gameObject);
         }
     }
