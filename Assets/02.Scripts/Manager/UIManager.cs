@@ -1,23 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{
-    // ¿ŒΩ∫∆Â≈Õ √¢ø°º≠ 3∞≥¿« «œ∆Æ ¿ÃπÃ¡ˆ∏¶ ø¨∞·«“ πËø≠
-    public Image[] heartImages;
-    public void UpdateHealthUI(int currentHealth)
     {
-        for (int i = 0; i < heartImages.Length; i++)
+        public GameObject menuPannel;
+        public GameObject gameOverPannel;
+        public Image[] heartImages; // ÌïòÌä∏(Ï≤¥Î†•) Î≥ÄÏàò
+
+    public void Stop()
         {
-            if (i < currentHealth)
-            {
-                heartImages[i].enabled = true; // «œ∆Æ ¿ÃπÃ¡ˆ∏¶ ƒ“¥Ÿ
-            }
-            // ±◊∑∏¡ˆ æ ¥Ÿ∏È (¿“æÓπˆ∏∞ √º∑¬ø° «ÿ¥Á«œ¥¬ «œ∆Æ∂Û∏È)
-            else
-            {
-                heartImages[i].enabled = false; // «œ∆Æ ¿ÃπÃ¡ˆ∏¶ ≤ˆ¥Ÿ
-            }
+            Time.timeScale = 0; //ÏãúÍ∞Ñ 0ÏúºÎ°ú Ìï¥ÏÑú Î©àÏ∂§
+            menuPannel.SetActive(true); //ÏòµÏÖòÏ∞Ω ÎùÑÏö∞Í∏∞
         }
-    }
+
+        public void ReStart()
+        {
+            menuPannel.SetActive(false);
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //ÌòÑÏû¨ Ïî¨ Îã§ÏãúÎ∂àÎü¨Ïò§Í∏∞
+        }
+
+        public void Continue()
+        {
+            menuPannel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+        public void Exit()
+        {
+            Debug.Log("ÎÇòÍ∞ÄÍ∏∞ Í∏∞Îä•");
+            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+        }
+
+        public void GameOver()
+        {
+            Debug.Log("Í≤åÏûÑÏò§Î≤Ñ");
+            gameOverPannel.SetActive(true);
+        }
+
+        public void UpdateHealthUI(int currentHealth)
+        {
+            for (int i = 0; i < heartImages.Length; i++)
+                {
+            // ÌòÑÏû¨ Ï≤¥Î†•Î≥¥Îã§ Ïù∏Îç±Ïä§Í∞Ä ÌÅ¨Î©¥ (ÏûÉÏñ¥Î≤ÑÎ¶∞ Ï≤¥Î†• Ïπ∏Ïù¥Î©¥) ÌïòÌä∏Î•º ÎÅàÎã§
+                    if (i < currentHealth)
+                        {
+                            heartImages[i].enabled = true;
+                        }
+                    else
+                        {
+                            heartImages[i].enabled = false;
+                        }
+                }
+        }
 }
