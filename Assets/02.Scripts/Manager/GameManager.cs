@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     float score;
     public void InitGame()
     {
+
     }
 
     public void UpdateDistance()
