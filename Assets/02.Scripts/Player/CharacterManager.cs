@@ -25,5 +25,20 @@ public class CharacterManager : Singleton<CharacterManager>
         }
         clothesMaterial = player.clothes.material;
     }
+
+    public void SetGamePlayerMaterial()
+    {
+        if (clothesMaterial != null)
+        {
+            player.clothes.material = clothesMaterial;
+        }
+        if (hairMaterial != null)
+        {
+            Debug.Log(hairMaterial.color);
+            player.hair.material = hairMaterial;
+            player.hair1.material = hairMaterial;
+            player.hair2.material = hairMaterial;
+        }
+    }
 }
 

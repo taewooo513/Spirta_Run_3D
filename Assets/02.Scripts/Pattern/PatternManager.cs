@@ -14,12 +14,11 @@ public class PatternManager : Singleton<PatternManager>
 
     public void Start()
     {
-        patternQueue = new Queue<GameObject>();
-
     }
 
     public void StartGame()
     {
+        patternQueue = new Queue<GameObject>();
         for (int i = 0; i < addStartCount; i++) // º¯¼ö·Î 10
         {
             AddPattern();
@@ -49,7 +48,6 @@ public class PatternManager : Singleton<PatternManager>
         patternQueue.Dequeue();
         AddPattern();
     }
-
     public void ClearPatter()
     {
         patternQueue.Clear();

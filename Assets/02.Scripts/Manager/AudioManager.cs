@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     {
         if (coinSound != null)
         {
-            audioSource.PlayOneShot(coinSound);
+            audioSource?.PlayOneShot(coinSound);
         }
         else
         {
@@ -30,9 +30,9 @@ public class AudioManager : Singleton<AudioManager>
     }
     public void PlayCarCrashSound()
     {
-        if (carCrashSound.Length > 0)
+        if (carCrashSound?.Length > 0)
         {
-            audioSource.PlayOneShot(GetRandomCarCrashSound());
+            audioSource?.PlayOneShot(GetRandomCarCrashSound());
         }
         else
         {

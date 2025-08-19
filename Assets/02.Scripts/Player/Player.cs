@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
     public SkinnedMeshRenderer hair2;
     public SkinnedMeshRenderer clothes;
 
+    float tim = 0;
 
     void Start()
     {
         CharacterManager.Instance.player = this;
-        currentHealth = maxHealth; // 현재 체력을 최대 체력으로 초기화
-
+        // 현재 체력 -> 최대 체력
+        currentHealth = maxHealth;
+        CharacterManager.Instance.SetGamePlayerMaterial();
         if (uiManager != null)
         {
             uiManager.UpdateHealthUI(currentHealth);
@@ -27,7 +29,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         if (currentHealth <= 0) return;
-
+        tim += Time.deltaTime;
+        Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
         currentHealth -= damageAmount;
 
