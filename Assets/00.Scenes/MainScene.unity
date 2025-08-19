@@ -3642,7 +3642,7 @@ MonoBehaviour:
   - {fileID: 3306307127143689865, guid: 2f075d1636beef547ba2db67b0d00243, type: 3}
   - {fileID: 3306307127143689865, guid: 53bb83ca7c3981c45a08d06a923739c4, type: 3}
   addStartCount: 10
-  spawnDist: 3
+  spawnDist: 10
 --- !u!4 &181966060
 Transform:
   m_ObjectHideFlags: 0
@@ -8568,7 +8568,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 591883983}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.30664375, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -13235,7 +13235,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.4
+  m_fontSize: 106.2
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -33143,5 +33143,6 @@ SceneRoots:
   - {fileID: 1983417684}
   - {fileID: 1204454039}
   - {fileID: 181966060}
-  - {fileID: 1636430483}
   - {fileID: 1303236997}
+  - {fileID: 579633942}
+  - {fileID: 762700381}
