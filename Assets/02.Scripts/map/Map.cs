@@ -7,7 +7,15 @@ namespace _02.Scripts.map
         public float speed;
         private void Awake()
         {
-            GameManager.Instance.map = this;
+            if (GameManager.Instance.map == null)
+            {
+                GameManager.Instance.map = new Map[2];
+                GameManager.Instance.map[0] = this;
+            }
+            else
+            {
+                GameManager.Instance.map[1] = this;
+            }
         }
 
         void Update()

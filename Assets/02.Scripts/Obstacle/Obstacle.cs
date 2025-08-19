@@ -9,12 +9,12 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        if (speed != 0)
-            Movement();
+        Movement();
     }
 
     private void Movement()
     {
-        transform.position += Direction * (speed + GameManager.Instance.map.speed) * Time.deltaTime;
+        Debug.Log(GameManager.Instance.map[0].speed);
+        transform.position += Direction * (speed - GameManager.Instance.map[0].speed) * Time.deltaTime;
     }
 }
