@@ -4715,8 +4715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patterns:
   - {fileID: 2085177116437807114, guid: 5d02bc182844cce4281422a9c48f97ce, type: 3}
-  addStartCount: 10
-  spawnDist: 3
 --- !u!4 &338842893
 Transform:
   m_ObjectHideFlags: 0
