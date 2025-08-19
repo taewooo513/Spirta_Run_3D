@@ -653,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 902426750571224065}
   - component: {fileID: 6266584773671362231}
+  - component: {fileID: 2175676096405385681}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: Untagged
@@ -696,3 +697,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3316731, y: 2.1333022, z: 0.05946791}
   m_Center: {x: 0.024596453, y: 1.1016748, z: 0.09667379}
+--- !u!114 &2175676096405385681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051029343828433995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c2c453b9994314791d252eaae1bd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
