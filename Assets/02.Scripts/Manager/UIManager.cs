@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     {
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
+        
     }
 
     public void Exit()

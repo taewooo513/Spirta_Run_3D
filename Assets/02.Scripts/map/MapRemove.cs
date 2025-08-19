@@ -11,7 +11,7 @@ namespace _02.Scripts.map
             if (other.transform.TryGetComponent(out Pattern pattern))
             {
                 PatternManager.Instance.PopPattern();
-                Destroy(pattern.gameObject);
+                Destroy(other.transform.parent.gameObject);
             }
             else
             {
