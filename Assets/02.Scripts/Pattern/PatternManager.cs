@@ -9,12 +9,14 @@ public class PatternManager : Singleton<PatternManager>
     private GameObject[] patterns;
 
     public Queue<GameObject> patternQueue;
+    public int addStartCount;
+    public float spawnDist;
 
     public void Start()
     {
         patternQueue = new Queue<GameObject>();
 
-        for (int i = 0; i < 10; i++) // 변수로 10
+        for (int i = 0; i < addStartCount; i++) // 변수로 10
         {
             AddPattern();
         }
@@ -32,6 +34,7 @@ public class PatternManager : Singleton<PatternManager>
         {
             Pattern pattern = patternQueue.Last().transform.GetComponentInChildren<Pattern>();
             Vector3 spawnPos = pattern.transform.position;
+            spawnPos.z += spawnDist;
             var obj = Instantiate(patterns[randPattern], spawnPos, Quaternion.identity);
             patternQueue.Enqueue(obj);
         }
