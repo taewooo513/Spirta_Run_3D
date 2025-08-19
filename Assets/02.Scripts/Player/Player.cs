@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("게임 오버!");
-
+        Time.timeScale = 0; // 게임을 멈춥니다.
         if (uiManager != null)
         {
             uiManager.GameOver();
