@@ -36,25 +36,26 @@ public class UIManager : MonoBehaviour
             Application.Quit();
         }
 
-        public void GameOver()
-        {
-            Debug.Log("게임오버");
-            gameOverPannel.SetActive(true);
-        }
+    public void GameOver()
+    {
+        Debug.Log("게임오버");
+        Time.timeScale = 0f;
+        gameOverPannel.SetActive(true);
+    }
 
-        public void UpdateHealthUI(int currentHealth)
+    public void UpdateHealthUI(int currentHealth) //UI 체력창 보여주는 함수
+    {
+        for (int i = 0; i < heartImages.Length; i++)
         {
-            for (int i = 0; i < heartImages.Length; i++)
-                {
             // 현재 체력보다 인덱스가 크면 (잃어버린 체력 칸이면) 하트를 끈다
-                    if (i < currentHealth)
-                        {
-                            heartImages[i].enabled = true;
-                        }
-                    else
-                        {
-                            heartImages[i].enabled = false;
-                        }
-                }
+            if (i < currentHealth)
+            {
+                heartImages[i].color = Color.white;
+            }
+            else
+            {
+                heartImages[i].color = Color.black;
+            }
         }
+    }
 }

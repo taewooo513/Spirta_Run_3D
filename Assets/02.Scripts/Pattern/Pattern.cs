@@ -6,6 +6,5 @@ public class Pattern : MonoBehaviour
 {
     private void Awake()
     {
-        Debug.Log("asdgnkol");
     }
 }

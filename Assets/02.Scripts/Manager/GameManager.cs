@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     float score;
     public void InitGame()
     {
+
     }
 
     public void UpdateDistance()
@@ -28,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ResumGame()
     {
+
     }
 
     public void GetInvItem(float maxTime)
@@ -62,5 +64,17 @@ public class GameManager : Singleton<GameManager>
             map[i].speed = speed;
             Debug.Log(map[i].speed);
         }
+    }
+
+    public void GameEnd()
+    {
+        PatternManager.Instance.ClearPatter();
+    }
+
+    public void GetStart()
+    {
+        PatternManager.Instance.StartGame();
+        playDistance = 0;
+        isInv = false;
     }
 }
