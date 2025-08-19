@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public Player player;
+
     public Map map;
     public float playDistance; // 진행 거리
     bool isInv;
     public void InitGame()
     {
+
     }
 
     public void UpdateDistance()
