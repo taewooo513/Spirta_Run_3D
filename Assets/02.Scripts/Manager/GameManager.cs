@@ -63,4 +63,16 @@ public class GameManager : Singleton<GameManager>
             Debug.Log(map[i].speed);
         }
     }
+
+    public void GameEnd()
+    {
+        PatternManager.Instance.ClearPatter();
+    }
+
+    public void GetStart()
+    {
+        PatternManager.Instance.StartGame();
+        playDistance = 0;
+        isInv = false;
+    }
 }
