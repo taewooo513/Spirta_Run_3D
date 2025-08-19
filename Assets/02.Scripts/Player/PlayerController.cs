@@ -115,9 +115,10 @@ public class PlayerController : MonoBehaviour
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
-
+                //BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
+                Debug.Log("æ∆¿Ã≈€ »πµÊ: " + item.name); 
                 item.GetItem();
+                //Debug.Log("Ω∫««µÂæ˜ æ∆¿Ã≈€ »πµÊ");
             }
         }
     }
