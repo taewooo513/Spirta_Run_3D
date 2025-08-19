@@ -8,7 +8,7 @@ public class VehicleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CharacterManager.Instance.player.TakeDamage(1);
+            CharacterManager.Instance.player.TakeDamage(1); //플레이어 체력 깎기
             Destroy(this.transform.parent.gameObject);
         }
     }

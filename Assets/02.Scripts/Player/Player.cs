@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.player = this;
-        // 현재 체력 -> 최대 체력
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // 현재 체력을 최대 체력으로 초기화
 
         if (uiManager != null)
         {
@@ -42,7 +41,6 @@ public class Player : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("게임 오버!");
-        Time.timeScale = 0; // 게임을 멈춥니다.
         if (uiManager != null)
         {
             uiManager.GameOver();

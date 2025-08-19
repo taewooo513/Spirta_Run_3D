@@ -4,17 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="" />
+    <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/CoinTest.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/CoinTest.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/UIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/UIScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/UIScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/UIScene.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Resource/2D Casual UI/Sprite/GUI.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Resource/2D Casual UI/Sprite/GUI.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Manager/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Manager/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Obstacle/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Obstacle/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Obstacle/VehicleTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Obstacle/VehicleTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Pattern/Pattern.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Pattern/Pattern.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Scripts/map/MapRemove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Scripts/map/MapRemove.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/71/0f9568b0/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/Manager/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/test.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -29,7 +48,8 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/UI&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -105,6 +125,9 @@
       <workItem from="1755501265797" duration="3880000" />
       <workItem from="1755511423326" duration="491000" />
       <workItem from="1755511956246" duration="5946000" />
+      <workItem from="1755573431090" duration="1264000" />
+      <workItem from="1755574738154" duration="10637000" />
+      <workItem from="1755590492197" duration="1262000" />
     </task>
     <servers />
   </component>
