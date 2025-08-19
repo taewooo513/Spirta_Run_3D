@@ -29,12 +29,12 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void Exit()
-    {
-        Debug.Log("나가기 기능");
-        UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
-    }
+    //public void Exit()
+    //{
+    //    Debug.Log("나가기 기능");
+    //    //UnityEditor.EditorApplication.isPlaying = false;
+    //    Application.Quit();
+    //}
 
     public void GameOver()
     {

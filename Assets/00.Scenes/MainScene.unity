@@ -8243,7 +8243,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.2
+  m_fontSize: 50
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -29999,9 +29999,10 @@ GameObject:
   - component: {fileID: 1983417684}
   - component: {fileID: 1983417683}
   - component: {fileID: 1983417682}
-  - component: {fileID: 1983417681}
   - component: {fileID: 1983417680}
   - component: {fileID: 1983417685}
+  - component: {fileID: 1983417686}
+  - component: {fileID: 1983417687}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30036,26 +30037,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1983417681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983417679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a34adb0fbd78f44933c803b0ced0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpEffectPrefab: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
-  slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
-  forwardSpeed: 0
-  sideSpeed: 10
-  jumpForce: 150
-  slideColliderHeight: 0.9
-  slideColliderCenter: {x: 0, y: 0.45, z: 0}
-  slideDuration: 1
 --- !u!136 &1983417682
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30131,6 +30112,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1636430479}
   maxHealth: 3
+  hair: {fileID: 0}
+  hair1: {fileID: 0}
+  hair2: {fileID: 0}
+  clothes: {fileID: 0}
+--- !u!114 &1983417686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983417679}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a34adb0fbd78f44933c803b0ced0c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpEffectPrefab: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
+  slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
+  forwardSpeed: 0
+  sideSpeed: 5
+  jumpForce: 100
+  slideColliderHeight: 0.9
+  slideColliderCenter: {x: 0, y: 0.45, z: 0}
+  slideDuration: 1
+--- !u!114 &1983417687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983417679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ffe5fa076101f44a3914e113609cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpEffectPrefab: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+  slideEffectPrefab: {fileID: 7177991128484655659, guid: 59a35ab9f68edff40b6e5332bed330f5, type: 3}
+  sideSpeed: 10
+  jumpForce: 100
+  slideColliderHeight: 0.9
+  slideColliderCenter: {x: 0, y: 0.45, z: 0}
+  slideDuration: 1
+  minSwipeDistance: 30
 --- !u!1 &1988100002
 GameObject:
   m_ObjectHideFlags: 0
