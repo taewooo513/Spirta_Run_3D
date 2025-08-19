@@ -9,8 +9,7 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        if (speed != 0)
-            Movement();
+        Movement();
     }
 
     private void Movement()
