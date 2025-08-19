@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ResumGame()
     {
+
     }
 
     public void GetInvItem(float maxTime)
