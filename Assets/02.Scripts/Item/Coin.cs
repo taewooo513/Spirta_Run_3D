@@ -6,9 +6,11 @@ public class Coin : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             GameManager.Instance.AddScore(1);
+            AudioManager.Instance.PlayCoinSound();
+            Destroy(gameObject);
         }
     }
 }
