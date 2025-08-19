@@ -44,6 +44,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3217836375469755073}
   - component: {fileID: 2089163416484120277}
+  - component: {fileID: 7214216834575837636}
+  - component: {fileID: 2093598706681618081}
   m_Layer: 0
   m_Name: EndPatternCollider
   m_TagString: Untagged
@@ -87,6 +89,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.834478, y: 9.3647585, z: 1}
   m_Center: {x: 0.21787739, y: 4.1823792, z: 0}
+--- !u!114 &7214216834575837636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7016777479320860194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392f58ef7dfd64145ae434231480074c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 0}
+--- !u!114 &2093598706681618081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7016777479320860194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aa016e30c18974f9c910a3acbe11c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 27
+  Direction: {x: 0, y: 0, z: 1}
 --- !u!1001 &310591484332943866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142,13 +171,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100010, guid: 3cfde9a41ff096140a1bfec6f262d0f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1300195214646223070}
   m_SourcePrefab: {fileID: 100100000, guid: 3cfde9a41ff096140a1bfec6f262d0f0, type: 3}
 --- !u!4 &310591484332815218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 3cfde9a41ff096140a1bfec6f262d0f0, type: 3}
   m_PrefabInstance: {fileID: 310591484332943866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &310591484332912464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100010, guid: 3cfde9a41ff096140a1bfec6f262d0f0, type: 3}
+  m_PrefabInstance: {fileID: 310591484332943866}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1300195214646223070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310591484332912464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aa016e30c18974f9c910a3acbe11c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 27
+  Direction: {x: 0, y: 0, z: 1}
 --- !u!1001 &6270788471689814201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,10 +255,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 100014, guid: 025a3497fa872fe4ebfed7edb8eb310c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5010412826554211032}
   m_SourcePrefab: {fileID: 100100000, guid: 025a3497fa872fe4ebfed7edb8eb310c, type: 3}
 --- !u!4 &6270788471689427509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: 025a3497fa872fe4ebfed7edb8eb310c, type: 3}
   m_PrefabInstance: {fileID: 6270788471689814201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6270788471689717271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100014, guid: 025a3497fa872fe4ebfed7edb8eb310c, type: 3}
+  m_PrefabInstance: {fileID: 6270788471689814201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5010412826554211032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270788471689717271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aa016e30c18974f9c910a3acbe11c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 27
+  Direction: {x: 0, y: 0, z: 1}

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Map map;
+    public Map[] map;
     public float playDistance; // 진행 거리
     bool isInv;
+    float score;
     public void InitGame()
     {
     }
@@ -36,7 +37,9 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator GetSpeedItemBuff(float maxTime)
     {
+        isInv = true;
         yield return new WaitForSeconds(maxTime);
+        isInv = false;
     }
     public void GetSpeedUpItem(float val, float maxTime)
     {
@@ -45,9 +48,19 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator GetSpeedItemBuff(float val, float maxTime)
     {
-        float speed = map.speed;
-        map.speed = val;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = val;
+            Debug.Log(map[i].speed);
+            Debug.Log(maxTime);
+        }
         yield return new WaitForSeconds(maxTime);
-        map.speed = speed;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = speed;
+            Debug.Log(map[i].speed);
+        }
     }
 }
