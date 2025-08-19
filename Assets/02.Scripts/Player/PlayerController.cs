@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 슬라이드 입력 (왼쪽 컨트롤 키)
+        // 키 입력 시간동안 지속되어야되기때문에 코루틴을 사용 해야될거같다.
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             StartCoroutine(Slide());
