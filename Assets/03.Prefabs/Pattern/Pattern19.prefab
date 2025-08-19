@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4399544226830477893}
   - component: {fileID: 6074696550460917553}
-  - component: {fileID: 2492704627208256510}
+  - component: {fileID: 2834604300208860308}
   m_Layer: 0
   m_Name: EndPatternCollider
   m_TagString: Untagged
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.764344, y: 5.0166545, z: 1}
   m_Center: {x: 0.078716755, y: 2.0083272, z: 0}
---- !u!114 &2492704627208256510
+--- !u!114 &2834604300208860308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,6 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5234893517961528968}
+  - component: {fileID: 2209385939183894980}
   m_Layer: 0
   m_Name: Pattern19
   m_TagString: Untagged
@@ -123,6 +124,20 @@ Transform:
   - {fileID: 5129583482720897555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2209385939183894980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306307127143689865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aa016e30c18974f9c910a3acbe11c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  Direction: {x: 0, y: 0, z: 1}
 --- !u!1001 &21185676290171512
 PrefabInstance:
   m_ObjectHideFlags: 0
