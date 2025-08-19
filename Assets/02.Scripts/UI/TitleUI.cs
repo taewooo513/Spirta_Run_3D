@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TitleUI : MonoBehaviour
 {
@@ -13,5 +14,10 @@ public class TitleUI : MonoBehaviour
     public void OnClothesSetColor(string color)
     {
         CharacterManager.Instance.SetColorClothes(color);
+    }
+
+    public void GameStart()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
