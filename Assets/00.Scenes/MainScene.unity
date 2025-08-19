@@ -8243,7 +8243,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.15
+  m_fontSize: 106.2
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -30047,6 +30047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a34adb0fbd78f44933c803b0ced0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
   forwardSpeed: 0
   sideSpeed: 10
   jumpForce: 150
