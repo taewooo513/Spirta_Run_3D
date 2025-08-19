@@ -16,6 +16,10 @@ public class PatternManager : Singleton<PatternManager>
     {
         patternQueue = new Queue<GameObject>();
 
+    }
+
+    public void StartGame()
+    {
         for (int i = 0; i < addStartCount; i++) // º¯¼ö·Î 10
         {
             AddPattern();
