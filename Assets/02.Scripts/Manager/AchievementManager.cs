@@ -189,6 +189,6 @@ public class AchievementManager : Singleton<AchievementManager>
 
     private void AchievementReward(int rewardAmount)
     {
-        //보상 증정?
+        GameManager.Instance.AddJewel(rewardAmount);
     }
 }
