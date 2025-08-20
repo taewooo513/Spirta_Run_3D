@@ -11,11 +11,10 @@ public class GameManager : Singleton<GameManager>
     bool isInv;
     
     [HideInInspector] public Score score = new();
-    private int _topScore;
-    public int TopScore //최고 점수
-    {
-        get { return _topScore; }
-    }
+    
+    private float _playTime;
+
+    [HideInInspector] public int TopScore;
     
     public void InitGame()
     {
@@ -25,8 +24,13 @@ public class GameManager : Singleton<GameManager>
     public void UpdateDistance()
     {
         playDistance += Time.deltaTime * 100;
+        AchievementManager.Instance.OnDistanceUpdated(playDistance);
     }
-
+    public void UpdateTime()
+    {
+        _playTime += Time.deltaTime;
+        AchievementManager.Instance.OnTimeUpdated(_playTime);
+    }
     public void AddScore(int val)
     {
     }
@@ -80,6 +84,7 @@ public class GameManager : Singleton<GameManager>
     {
         PatternManager.Instance.StartGame();
         playDistance = 0;
+        _playTime = 0;
         isInv = false;
     }
 }

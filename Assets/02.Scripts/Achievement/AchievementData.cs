@@ -13,4 +13,5 @@ public class AchievementData
     public AchievementType Type { get; set; }
     public int GoalValue { get; set; }
     public bool IsCleared { get; set; }
+    public int Reward { get; set; }
 }

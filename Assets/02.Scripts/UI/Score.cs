@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+    UIManager uiManager;
+
+    private void Start()
+    {
+        uiManager = CharacterManager.Instance.player.uiManager;
+    }
     private int _curScore;
     public int CurScore //현재 점수
     {
         get { return _curScore; }
-    }
-
-    private int _topScore;
-    public int TopScore //최고 점수
-    {
-        get { return _topScore; }
     }
 
     public void AddScore(int val) //점수 추가
@@ -21,13 +21,14 @@ public class Score : MonoBehaviour
         _curScore += val;
         SetTopScore();
         Debug.Log("현재 점수: " + _curScore);
+        AchievementManager.Instance.OnScoreAdded(_curScore); //도전과제 점수 추가
     }
 
     public void SetTopScore() //최고점수 갱신
     {
-        if (_curScore > _topScore)
+        if (_curScore > GameManager.Instance.TopScore)
         {
-            _topScore = _curScore;
+            GameManager.Instance.TopScore = _curScore;
         }
     }
 
