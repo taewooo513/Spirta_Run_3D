@@ -9,7 +9,14 @@ public class GameManager : Singleton<GameManager>
     public Map[] map;
     public float playDistance; // 진행 거리
     bool isInv;
-    float score;
+    
+    [HideInInspector] public Score score;
+    
+    private float _playTime;
+
+    [HideInInspector] public int TopScore;
+    [HideInInspector] public int Coin;
+    
     public void InitGame()
     {
 
@@ -18,10 +25,12 @@ public class GameManager : Singleton<GameManager>
     public void UpdateDistance()
     {
         playDistance += Time.deltaTime * 100;
+        AchievementManager.Instance.OnDistanceUpdated(playDistance);
     }
-
-    public void AddScore(int val)
+    public void UpdateTime()
     {
+        _playTime += Time.deltaTime;
+        AchievementManager.Instance.OnTimeUpdated(_playTime);
     }
 
     public void StopGame()
@@ -55,15 +64,12 @@ public class GameManager : Singleton<GameManager>
         {
             float speed = map[i].speed;
             map[i].speed = val;
-            Debug.Log(map[i].speed);
-            Debug.Log(maxTime);
         }
         yield return new WaitForSeconds(maxTime);
         for (int i = 0; i < 2; i++)
         {
             float speed = map[i].speed;
             map[i].speed = speed;
-            Debug.Log(map[i].speed);
         }
     }
 
@@ -76,6 +82,7 @@ public class GameManager : Singleton<GameManager>
     {
         PatternManager.Instance.StartGame();
         playDistance = 0;
+        _playTime = 0;
         isInv = false;
     }
 }

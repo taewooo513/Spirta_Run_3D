@@ -1,62 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public bool gmMode;
     public GameObject menuPannel;
     public GameObject gameOverPannel;
-    public Image[] heartImages;
+    public ScoreUI scoreUI;
+    public Image[] heartImages; // 하트(체력) 변수
 
-    [Header("Settings UI Elements")] // 인스펙터에서 보기 좋게 그룹화
-    public Slider bgmSlider;
-    public Slider sfxSlider;
-    public Toggle tiltControlToggle;
-    public Toggle buttonControlToggle;
-    public Toggle vibrationToggle;
-
-    void Start()
+    private void Start()
     {
-        // 게임 시작 시, 저장된 설정값으로 UI 상태를 초기화합니다.
-        InitializeSettingsUI();
+        //CharacterManager.Instance.player.uiManager = this;
     }
-
-    // UI 요소들에 리스너(Listener)를 추가하고 초기값을 설정하는 함수
-    private void InitializeSettingsUI()
-    {
-        // 사운드 슬라이더
-        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        bgmSlider.onValueChanged.AddListener(Settings.Instance.SetBGMVolume);
-
-        // 조작 방식 토글
-        bool isTilt = Settings.Instance.currentControlType == Settings.ControlType.Tilt;
-        tiltControlToggle.isOn = isTilt;
-        buttonControlToggle.isOn = !isTilt;
-        tiltControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) Settings.Instance.SetControlType(0); });
-        buttonControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) Settings.Instance.SetControlType(1); });
-
-        // 진동 토글
-        vibrationToggle.isOn = Settings.Instance.IsVibrationEnabled();
-        vibrationToggle.onValueChanged.AddListener(Settings.Instance.SetVibration);
-    }
-
-    // --- 그래픽 품질 버튼 함수 (버튼의 OnClick 이벤트에 연결) ---
-    public void OnGraphicsLowButton() => Settings.Instance.SetGraphicsQuality(0);
-    public void OnGraphicsMediumButton() => Settings.Instance.SetGraphicsQuality(1);
-    public void OnGraphicsHighButton() => Settings.Instance.SetGraphicsQuality(2);
-
-    // --- 기존 UIManager 함수들은 그대로 유지 ---
     public void Stop()
     {
-        Time.timeScale = 0;
-        menuPannel.SetActive(true);
+        Time.timeScale = 0; //시간 0으로 해서 멈춤
+        menuPannel.SetActive(true); //옵션창 띄우기
     }
 
     public void ReStart()
     {
+        GameManager.Instance.score.InitializeScore(); //점수 초기화
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //현재 씬 다시불러오기
     }
 
     public void Continue()
@@ -65,17 +36,32 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void Exit()
+    {
+        Debug.Log("나가기 기능");
+        SceneManager.LoadScene("StandbyScene");
+    }
+
     public void GameOver()
     {
         Debug.Log("게임오버");
+        GameManager.Instance.Coin += GameManager.Instance.score.CurScore;
         Time.timeScale = 0f;
         gameOverPannel.SetActive(true);
     }
 
-    public void UpdateHealthUI(int currentHealth)
+    public void UpdateHealthUI(int currentHealth) //UI 체력창 보여주는 함수
     {
         for (int i = 0; i < heartImages.Length; i++)
         {
+            if (gmMode)
+            {
+                heartImages[i].color = Color.yellow;
+                heartImages[i+1].color = Color.yellow;
+                heartImages[i+2].color = Color.yellow;
+                return;
+            }
+            // 현재 체력보다 인덱스가 크면 (잃어버린 체력 칸이면) 하트를 끈다
             if (i < currentHealth)
             {
                 heartImages[i].color = Color.white;

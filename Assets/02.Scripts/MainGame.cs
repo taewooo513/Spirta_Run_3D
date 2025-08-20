@@ -15,5 +15,6 @@ public class MainGame : MonoBehaviour
     void Update()
     {
         GameManager.Instance.UpdateDistance();
+        GameManager.Instance.UpdateTime();
     }
 }
