@@ -13,6 +13,6 @@ public class ScoreUI : MonoBehaviour
     {
         scoreText.text = GameManager.Instance.score.CurScore.ToString();
         curScoreText.text = GameManager.Instance.score.CurScore.ToString();
-        topScoreText.text = GameManager.Instance.TopScore.ToString();
+        topScoreText.text = GameManager.Instance.score.TopScore.ToString();
     }
 }

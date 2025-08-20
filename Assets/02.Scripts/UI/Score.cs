@@ -16,10 +16,16 @@ public class Score : MonoBehaviour
         get { return _topScore; }
     }
 
+    void Start()
+    {
+        GameManager.Instance.score = this;
+    }
+
     public void AddScore(int val) //점수 추가
     {
         _curScore += val;
         SetTopScore();
+        CharacterManager.Instance.player.uiManager.scoreUI.UpdateUI();
         Debug.Log("현재 점수: " + _curScore);
     }
 

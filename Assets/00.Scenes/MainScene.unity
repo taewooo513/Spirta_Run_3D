@@ -3123,7 +3123,7 @@ GameObject:
   - component: {fileID: 167596692}
   - component: {fileID: 167596691}
   m_Layer: 5
-  m_Name: bestScore
+  m_Name: bestScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4064,8 +4064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 838183267}
-  curScoreText: {fileID: 1624761024}
-  topScoreText: {fileID: 559652241}
+  curScoreText: {fileID: 1645369053}
+  topScoreText: {fileID: 167596691}
 --- !u!114 &218790885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24547,7 +24547,7 @@ GameObject:
   - component: {fileID: 1645369054}
   - component: {fileID: 1645369053}
   m_Layer: 5
-  m_Name: curScore
+  m_Name: curScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

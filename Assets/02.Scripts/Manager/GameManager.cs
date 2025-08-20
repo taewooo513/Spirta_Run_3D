@@ -10,13 +10,7 @@ public class GameManager : Singleton<GameManager>
     public float playDistance; // 진행 거리
     bool isInv;
     
-    [HideInInspector] public Score score = new();
-    private int _topScore;
-    public int TopScore //최고 점수
-    {
-        get { return _topScore; }
-    }
-    
+    [HideInInspector] public Score score;
     public void InitGame()
     {
 
@@ -25,10 +19,6 @@ public class GameManager : Singleton<GameManager>
     public void UpdateDistance()
     {
         playDistance += Time.deltaTime * 100;
-    }
-
-    public void AddScore(int val)
-    {
     }
 
     public void StopGame()
