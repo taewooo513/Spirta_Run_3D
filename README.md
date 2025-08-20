@@ -118,7 +118,9 @@
 
 <hr>
 
-~~~ 여기서부터 수정 안됨 ~~~
+
+여기서부터 수정 안됨
+~~~
 <h3>🛠️ 기본 시스템 구현 <small>(07/29 화 ~ 07/30 수)</small></h3>
 <ul>
   <li>캐릭터 움직임 및 기본 물리 시스템 개발</li>
@@ -264,6 +266,6 @@ https://www.figma.com/design/RFvjWCPSmOGXrW1Ya0HW5l/3D-Subway-Surfers?node-id=0-
 
 이번 경험을 통해 **협업 시 에셋 관리 규칙 수립과 Git 워크플로우 사전 정리의 필요성**을 뼈저리게 느꼈습니다.  
 추후에는 PR 전 반드시 `.meta` 파일 포함 여부를 확인하고, 팀 차원의 에셋 관리 기준을 문서화하여 재발을 방지할 예정입니다.
-
+~~~
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0C68AB&height=150&section=footer" />
