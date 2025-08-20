@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 114800373}
   - component: {fileID: 114800372}
   - component: {fileID: 114800374}
+  - component: {fileID: 114800375}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -348,6 +349,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &114800375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114800370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f9018bd342005459a36b350fe280cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
+  currentControlType: 0
 --- !u!1 &129505188
 GameObject:
   m_ObjectHideFlags: 0
