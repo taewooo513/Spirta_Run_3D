@@ -11,7 +11,8 @@ public class GameManager : Singleton<GameManager>
     bool isInv;
     
     [HideInInspector] public Score score = new();
-    private int _topScore
+    private int _topScore;
+    public int TopScore //최고 점수
     {
         get { return _topScore; }
     }
