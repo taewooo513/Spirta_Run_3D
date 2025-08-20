@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPannel;
     public Image[] heartImages; // 하트(체력) 변수
 
+    private void Start()
+    {
+        CharacterManager.Instance.player.uiManager = this;
+    }
     public void Stop()
     {
         Time.timeScale = 0; //시간 0으로 해서 멈춤
@@ -27,6 +31,7 @@ public class UIManager : MonoBehaviour
     {
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
+        
     }
 
     //public void Exit()
@@ -39,21 +44,22 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("게임오버");
+        Time.timeScale = 0f;
         gameOverPannel.SetActive(true);
     }
 
-    public void UpdateHealthUI(int currentHealth)
+    public void UpdateHealthUI(int currentHealth) //UI 체력창 보여주는 함수
     {
         for (int i = 0; i < heartImages.Length; i++)
         {
             // 현재 체력보다 인덱스가 크면 (잃어버린 체력 칸이면) 하트를 끈다
             if (i < currentHealth)
             {
-                heartImages[i].enabled = true;
+                heartImages[i].color = Color.white;
             }
             else
             {
-                heartImages[i].enabled = false;
+                heartImages[i].color = Color.black;
             }
         }
     }

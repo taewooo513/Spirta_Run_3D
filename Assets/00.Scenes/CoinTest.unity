@@ -236,6 +236,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491456d419b36154f9e5e51681b5709c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &820904691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820904688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e5a3c0f4d439d4eaf6ac1481edfa4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useItemAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 820904691}
+        m_TargetAssemblyTypeName: Item, Assembly-CSharp
+        m_MethodName: GetCoinItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  maxTime: 0
+  val: 1
 --- !u!1 &905332111
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +711,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 36771092893083849, guid: b3b50bbf70f67b3468490e4f3a657734, type: 3}
       insertIndex: -1
       addedObject: {fileID: 820904689}
+    - targetCorrespondingSourceObject: {fileID: 36771092893083849, guid: b3b50bbf70f67b3468490e4f3a657734, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 820904691}
   m_SourcePrefab: {fileID: 100100000, guid: b3b50bbf70f67b3468490e4f3a657734, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

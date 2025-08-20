@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2031025695871106399}
   - component: {fileID: 8625401948785417409}
   - component: {fileID: 2010071397888638289}
-  - component: {fileID: 278021274840497839}
+  - component: {fileID: 3034640465599658028}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Item
@@ -132,7 +132,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &278021274840497839
+--- !u!114 &3034640465599658028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   useItemAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 278021274840497839}
+      - m_Target: {fileID: 3034640465599658028}
         m_TargetAssemblyTypeName: Item, Assembly-CSharp
         m_MethodName: GetCoinItem
         m_Mode: 1

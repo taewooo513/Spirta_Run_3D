@@ -2,6 +2,7 @@ using _02.Scripts.map;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -71,7 +72,7 @@ public class GameManager : Singleton<GameManager>
         PatternManager.Instance.ClearPatter();
     }
 
-    public void GetStart()
+    public void GameStart()
     {
         PatternManager.Instance.StartGame();
         playDistance = 0;
