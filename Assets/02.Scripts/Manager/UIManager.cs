@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public bool gmMode;
     public GameObject menuPannel;
     public GameObject gameOverPannel;
+    public ScoreUI scoreUI;
     public Image[] heartImages; // 하트(체력) 변수
 
     private void Start()
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void ReStart()
     {
+        GameManager.Instance.score.InitializeScore(); //점수 초기화
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //현재 씬 다시불러오기
