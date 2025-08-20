@@ -55,15 +55,12 @@ public class GameManager : Singleton<GameManager>
         {
             float speed = map[i].speed;
             map[i].speed = val;
-            Debug.Log(map[i].speed);
-            Debug.Log(maxTime);
         }
         yield return new WaitForSeconds(maxTime);
         for (int i = 0; i < 2; i++)
         {
             float speed = map[i].speed;
             map[i].speed = speed;
-            Debug.Log(map[i].speed);
         }
     }
 
