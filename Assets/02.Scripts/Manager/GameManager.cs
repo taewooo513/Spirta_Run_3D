@@ -9,7 +9,16 @@ public class GameManager : Singleton<GameManager>
     public Map[] map;
     public float playDistance; // 진행 거리
     bool isInv;
-    float score;
+    private int _topScore;
+    public int TopScore
+    {
+        get { return _topScore; }
+    }
+    private int _score;
+    public int Score
+    {
+        get { return _score; }
+    }
     public void InitGame()
     {
 
@@ -22,6 +31,11 @@ public class GameManager : Singleton<GameManager>
 
     public void AddScore(int val)
     {
+        _score += val;
+        if (_score > _topScore)
+        {
+            _topScore = _score;
+        }
     }
 
     public void StopGame()
