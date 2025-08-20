@@ -12065,7 +12065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801ed548ecc7c6241b1c01f26b7c2204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gmMode: 0
   menuPannel: {fileID: 236087660}
   gameOverPannel: {fileID: 1044232220}
   heartImages:
@@ -30722,7 +30721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d22919ad76ab76458a6ae6e44b1dd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 0}
+  uiManager: {fileID: 762700377}
   maxHealth: 3
   hair: {fileID: 1555645088}
   hair1: {fileID: 1313560180}
