@@ -20,7 +20,7 @@ public class Score : MonoBehaviour
     {
         _curScore += val;
         SetTopScore();
-        Debug.Log(_curScore);
+        Debug.Log("현재 점수: " + _curScore);
     }
 
     public void SetTopScore() //최고점수 갱신

@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        CharacterManager.Instance.player.uiManager = this;
+        //CharacterManager.Instance.player.uiManager = this;
     }
     public void Stop()
     {
