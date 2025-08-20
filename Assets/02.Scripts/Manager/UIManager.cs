@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public bool gmMode;
+
     public GameObject menuPannel;
     public GameObject gameOverPannel;
     public Image[] heartImages; // 하트(체력) 변수
 
     private void Start()
     {
-        CharacterManager.Instance.player.uiManager = this;
+        //CharacterManager.Instance.player.uiManager = this;
     }
     public void Stop()
     {
