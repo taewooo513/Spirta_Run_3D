@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 765140075}
-  m_IndirectSpecularColor: {r: 0.34928158, g: 0.37617967, b: 0.33825433, a: 1}
+  m_IndirectSpecularColor: {r: 0.34928194, g: 0.37618002, b: 0.3382543, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30539,7 +30539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a34adb0fbd78f44933c803b0ced0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpEffectPrefab: {fileID: 1141330259687333427, guid: 6718dc24203da53468af9ada8fef7d6d, type: 3}
+  jumpEffectPrefab: {fileID: 2360655870356088562, guid: 57a776ff377f3c44e8403e2067a4d41f, type: 3}
   slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
   forwardSpeed: 0
   sideSpeed: 10
@@ -30630,6 +30630,7 @@ MonoBehaviour:
   hair1: {fileID: 1313560180}
   hair2: {fileID: 347208299}
   clothes: {fileID: 1297248883}
+  coinEffectPrefab: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
 --- !u!1 &1988100002
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public SkinnedMeshRenderer hair2;
     public SkinnedMeshRenderer clothes;
 
+    public GameObject coinEffectPrefab;
+
     float tim = 0;
 
     void Start()
@@ -64,6 +66,11 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("æ∆¿Ã≈€ »πµÊ: " + item.name); 
                 item.GetItem();
+            }
+
+            if (coinEffectPrefab != null)
+            {
+                Instantiate(coinEffectPrefab, transform.position, Quaternion.identity);
             }
         }
     }
