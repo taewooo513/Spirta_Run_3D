@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
 
+    public GameObject jumpEffectPrefab;
+    public GameObject slideEffectPrefab;
+
     // 설정 값
     public float forwardSpeed = 8f;
     public float sideSpeed = 5f;
@@ -18,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public float slideColliderHeight = 0.9f;
     public Vector3 slideColliderCenter = new Vector3(0, 0.45f, 0);
     public float slideDuration = 1.0f;
+
+    //슬라이드 중 점프 막기 위한 isSliding
+    private bool isSliding = false;
 
 
     void Start()
@@ -45,13 +51,14 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * horizontalInput * sideSpeed * Time.deltaTime);
 
         // 점프 입력 (스페이스 바)
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isSliding)
         {
             Jump();
         }
 
         // 슬라이드 입력 (왼쪽 컨트롤 키)
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        // 키 입력 시간동안 지속되어야되기때문에 코루틴을 사용 해야될거같다.
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding)
         {
             StartCoroutine(Slide());
         }
@@ -61,36 +68,57 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetTrigger("Jump");
+
+        if (jumpEffectPrefab != null)
+        {
+            Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     IEnumerator Slide()
     {
-        // 슬라이드 애니메이션 시작
-        animator.SetTrigger("Slide");
+        isSliding = true;
+        GameObject slideEffectInstance = null;
 
-        // 콜라이더를 슬라이드용으로 변경
+        // 슬라이드 시작 시점에 애니메이션과 이펙트를 동시에 실행
+        animator.SetTrigger("Slide");
+        if (slideEffectPrefab != null)
+        {
+            slideEffectInstance = Instantiate(slideEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+        // 슬라이드용으로 콜라이더 변경
         capsuleCollider.height = slideColliderHeight;
         capsuleCollider.center = slideColliderCenter;
 
-        // 지정된 시간(slideDuration)만큼 기다림
+        // 지정된 시간만큼 슬라이드 상태를 유지
         yield return new WaitForSeconds(slideDuration);
 
-        // 콜라이더를 원래대로 복구
+        // 슬라이드가 끝나면 콜라이더를 원래대로 복구
         capsuleCollider.height = originalColliderHeight;
         capsuleCollider.center = originalColliderCenter;
+
+        // 슬라이드가 끝나는 시점에 이펙트도 함께 파괴
+        if (slideEffectInstance != null)
+        {
+            Destroy(slideEffectInstance);
+        }
+
+        isSliding = false;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        //Item 태그로 충돌 판정
+        // Item 태그로 충돌 판정
         if (other.CompareTag("Item")) 
         {
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
-
+                //BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
+                Debug.Log("아이템 획득: " + item.name); 
                 item.GetItem();
-                Debug.Log("스피드업 아이템 획득");
+                //Debug.Log("스피드업 아이템 획득");
             }
         }
     }
