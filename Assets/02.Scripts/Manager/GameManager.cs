@@ -84,7 +84,6 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart()
     {
-        PatternManager.Instance.StartGame();
         playDistance = 0;
         _playTime = 0;
         isInv = false;
