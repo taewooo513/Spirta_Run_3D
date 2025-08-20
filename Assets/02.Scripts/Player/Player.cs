@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.player = this;
-        currentHealth = maxHealth; //현재 체력을 최대 체력으로 초기화
+        // 현재 체력 -> 최대 체력
+        currentHealth = maxHealth;
         CharacterManager.Instance.SetGamePlayerMaterial();
         if (uiManager != null)
         {
@@ -27,14 +28,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (uiManager.gmMode)  //gm 모드일때는 무적
-        {
-            Debug.Log("무적모드 : 충돌 무시");
-            return;
-        }
-
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
+        Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
         currentHealth -= damageAmount;
 
