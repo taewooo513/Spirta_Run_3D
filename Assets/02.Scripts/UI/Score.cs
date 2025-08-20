@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Score : MonoBehaviour
 {
-    UIManager uiManager;
+    [SerializeField] public UIManager uiManager;
 
     private void Start()
     {
-        uiManager = CharacterManager.Instance.player.uiManager;
         GameManager.Instance.score = this;
     }
     private int _curScore;
@@ -36,5 +36,9 @@ public class Score : MonoBehaviour
     public void InitializeScore()
     {
         _curScore = 0;
+    }
+    public void SendThisUIManager(UIManager UIManager)
+    {
+        uiManager = UIManager;
     }
 }

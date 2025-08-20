@@ -9,22 +9,26 @@ public class GameManager : Singleton<GameManager>
     public Map[] map;
     public float playDistance; // 진행 거리
     bool isInv;
-    
+
     [HideInInspector] public Score score;
-    
+
     private float _playTime;
 
     [HideInInspector] public int TopScore;
     [HideInInspector] public int Coin;
-    
+    [HideInInspector] public int Jewel;
+
     public void InitGame()
     {
 
     }
-
+    public void AddJewel(int val)
+    {
+        Jewel += val;
+    }
     public void UpdateDistance()
     {
-        playDistance += Time.deltaTime * 100;
+        playDistance += map[0].speed * Time.deltaTime;
         AchievementManager.Instance.OnDistanceUpdated(playDistance);
     }
     public void UpdateTime()
@@ -84,5 +88,6 @@ public class GameManager : Singleton<GameManager>
         playDistance = 0;
         _playTime = 0;
         isInv = false;
+        Time.timeScale = 1f;
     }
 }

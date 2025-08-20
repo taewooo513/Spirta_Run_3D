@@ -9,9 +9,9 @@ public class AchievementManager : Singleton<AchievementManager>
     private string achievementPath = Path.Combine(Application.streamingAssetsPath, "AchievementDataJson.json");
 
     public Dictionary<int, AchievementData> AchievementDict = new Dictionary<int, AchievementData>();
-    private List<AchievementData> scoreAchievementList = new List<AchievementData>();
-    private List<AchievementData> distanceAchievementList = new List<AchievementData>();
-    private List<AchievementData> timeAchievementList = new List<AchievementData>();
+    public List<AchievementData> scoreAchievementList = new List<AchievementData>();
+    public List<AchievementData> distanceAchievementList = new List<AchievementData>();
+    public List<AchievementData> timeAchievementList = new List<AchievementData>();
 
     protected override void Awake()
     {
@@ -64,57 +64,131 @@ public class AchievementManager : Singleton<AchievementManager>
     }
 
     //AchievementManager.Instance.GetAchievementClear()
-    public bool[] GetAchievementClear() // 도전과제 깼는지 안깼는지를 가져오는 친구, 배열만 가져오는 역할
+    public int GetAchievementClear(List<AchievementData> achievements) // 도전과제 깼는지 안깼는지를 가져오는 친구, 배열만 가져오는 역할
     {
-        bool[] achievementClear = new bool[AchievementDict.Count];
         int index = 0;
-        foreach (var achievement in AchievementDict)
+        foreach (var achievement in achievements)
         {
-            achievementClear[index] = achievement.Value.IsCleared;
-            index++;
+            if(achievement.IsCleared)
+            {
+                index++;
+            }
+            else
+            {
+                break;
+            }
         }
-        return achievementClear;
+        return index;
+    }
+
+    public string GetAchievementDescription(AchievementType type)
+    {
+        int id = FindClearedAchievementIDByType(type);
+        if (id == 0)
+        {
+            return null;
+        }
+        else
+        {
+            return AchievementDict[id].Description;
+        }
+    }
+    public int FindClearedAchievementIDByType(AchievementType type)
+    {
+        int id = 0;
+        switch (type)
+        {
+            case AchievementType.Score:
+                foreach (var achievement in scoreAchievementList)
+                {
+                    if (achievement.IsCleared)
+                        id = achievement.ID;
+                }
+                break;
+            case AchievementType.Distance:
+                foreach (var achievement in distanceAchievementList)
+                {
+                    if (achievement.IsCleared)
+                        id = achievement.ID;
+                }
+                break;
+            case AchievementType.Time:
+                foreach (var achievement in timeAchievementList)
+                {
+                    if (achievement.IsCleared)
+                        id = achievement.ID;
+                }
+                break;
+        }
+        return id;
     }
     public void OnScoreAdded(int curScore)
     {
-        if (scoreAchievementList.Count == 0)
-            return;
-
-        if (curScore >= scoreAchievementList[0].GoalValue)
+        foreach(var achievement in scoreAchievementList)
         {
-            AchievementDict[scoreAchievementList[0].ID].IsCleared = true;
-            AchievementReward(AchievementDict[scoreAchievementList[0].ID].Reward);
-            //여기에 도전과제 달성 UI 띄우는 것 연결하셔야합니다.
-            scoreAchievementList.Remove(scoreAchievementList[0]);
+            if (achievement.IsCleared)
+                continue;
+            else
+            {
+                if (curScore >= achievement.GoalValue)
+                {
+                    achievement.IsCleared = true;
+                    AchievementDict[achievement.ID].IsCleared = true;
+                    AchievementReward(AchievementDict[scoreAchievementList[0].ID].Reward);
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
+        
     }
     public void OnDistanceUpdated(float playDistance)
     {
-        if (distanceAchievementList.Count == 0)
-            return;
-        if (playDistance >= distanceAchievementList[0].GoalValue)
+        foreach (var achievement in distanceAchievementList)
         {
-            AchievementDict[distanceAchievementList[0].ID].IsCleared = true;
-            AchievementReward(AchievementDict[distanceAchievementList[0].ID].Reward);
-            //여기에 도전과제 달성 UI 띄우는 것 연결하셔야합니다.
-            distanceAchievementList.Remove(distanceAchievementList[0]);
+            if (achievement.IsCleared)
+                continue;
+            else
+            {
+                if (playDistance >= achievement.GoalValue)
+                {
+                    achievement.IsCleared = true;
+                    AchievementDict[achievement.ID].IsCleared = true;
+                    AchievementReward(AchievementDict[achievement.ID].Reward);
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
     public void OnTimeUpdated(float elapsedTime)
     {
-        if (timeAchievementList.Count == 0)
-            return;
-        if (elapsedTime >= timeAchievementList[0].GoalValue)
+        foreach (var achievement in timeAchievementList)
         {
-            AchievementDict[timeAchievementList[0].ID].IsCleared = true;
-            AchievementReward(AchievementDict[timeAchievementList[0].ID].Reward);
-            //여기에 도전과제 달성 UI 띄우는 것 연결하셔야합니다.
-            timeAchievementList.Remove(timeAchievementList[0]);
+            if (achievement.IsCleared)
+                continue;
+            else
+            {
+                if (elapsedTime >= achievement.GoalValue)
+                {
+                    achievement.IsCleared = true;
+                    AchievementDict[achievement.ID].IsCleared = true;
+                    AchievementReward(AchievementDict[achievement.ID].Reward);
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
     }
 
     private void AchievementReward(int rewardAmount)
     {
-        //보상 증정?
+        GameManager.Instance.AddJewel(rewardAmount);
     }
 }

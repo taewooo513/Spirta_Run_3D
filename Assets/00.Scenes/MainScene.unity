@@ -3643,6 +3643,7 @@ MonoBehaviour:
   - {fileID: 3306307127143689865, guid: 53bb83ca7c3981c45a08d06a923739c4, type: 3}
   addStartCount: 10
   spawnDist: 10
+  startPos: {x: 0, y: 0, z: 50}
 --- !u!4 &181966060
 Transform:
   m_ObjectHideFlags: 0
@@ -4078,6 +4079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9f19a6ac331b44e84fa1597cf91c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 0}
 --- !u!1 &222405380
 GameObject:
   m_ObjectHideFlags: 0
