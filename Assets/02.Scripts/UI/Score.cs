@@ -20,6 +20,7 @@ public class Score : MonoBehaviour
     {
         _curScore += val;
         SetTopScore();
+        CharacterManager.Instance.player.uiManager.scoreUI.UpdateUI();
         Debug.Log("현재 점수: " + _curScore);
         AchievementManager.Instance.OnScoreAdded(_curScore); //도전과제 점수 추가
     }

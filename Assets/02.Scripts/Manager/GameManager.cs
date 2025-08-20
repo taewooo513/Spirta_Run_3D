@@ -31,9 +31,6 @@ public class GameManager : Singleton<GameManager>
         _playTime += Time.deltaTime;
         AchievementManager.Instance.OnTimeUpdated(_playTime);
     }
-    public void AddScore(int val)
-    {
-    }
 
     public void StopGame()
     {
