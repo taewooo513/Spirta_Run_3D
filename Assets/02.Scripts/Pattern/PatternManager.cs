@@ -7,7 +7,7 @@ public class PatternManager : Singleton<PatternManager>
 {
     [SerializeField]
     private GameObject[] patterns;
-
+    public Vector3 startSpawnPos;
     public Queue<GameObject> patternQueue;
     public int addStartCount;
     public float spawnDist;
@@ -24,14 +24,14 @@ public class PatternManager : Singleton<PatternManager>
             AddPattern();
         }
     }
-
+    int c = 0;
     public void AddPattern()
     {
         int randPattern = Random.Range(0, patterns.Length);
 
         if (patternQueue.Count <= 0)
         {
-            patternQueue.Enqueue(Instantiate(patterns[randPattern], Vector3.zero, Quaternion.identity));
+            patternQueue.Enqueue(Instantiate(patterns[randPattern], startSpawnPos, Quaternion.identity));
         }
         else
         {
