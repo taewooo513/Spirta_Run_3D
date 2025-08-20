@@ -34,19 +34,18 @@ public class UIManager : MonoBehaviour
     {
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
-        
     }
 
     public void Exit()
     {
         Debug.Log("나가기 기능");
-        UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        SceneManager.LoadScene("StandbyScene");
     }
 
     public void GameOver()
     {
         Debug.Log("게임오버");
+        GameManager.Instance.Coin += GameManager.Instance.score.CurScore;
         Time.timeScale = 0f;
         gameOverPannel.SetActive(true);
     }

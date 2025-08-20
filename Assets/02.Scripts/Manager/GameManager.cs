@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     private float _playTime;
 
     [HideInInspector] public int TopScore;
+    [HideInInspector] public int Coin;
     
     public void InitGame()
     {
