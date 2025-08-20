@@ -3641,6 +3641,7 @@ MonoBehaviour:
   - {fileID: 3306307127143689865, guid: 21d1aa0a9c2a7b841b8dba36ad1801de, type: 3}
   - {fileID: 3306307127143689865, guid: 2f075d1636beef547ba2db67b0d00243, type: 3}
   - {fileID: 3306307127143689865, guid: 53bb83ca7c3981c45a08d06a923739c4, type: 3}
+  startSpawnPos: {x: 0, y: 0, z: 100}
   addStartCount: 10
   spawnDist: 10
 --- !u!4 &181966060
