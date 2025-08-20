@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
     public void AddScore(int val)
     {
+        
     }
 
     public void StopGame()
