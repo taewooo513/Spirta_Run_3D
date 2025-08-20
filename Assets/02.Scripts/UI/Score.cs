@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         uiManager = CharacterManager.Instance.player.uiManager;
+        GameManager.Instance.score = this;
     }
     private int _curScore;
     public int CurScore //현재 점수

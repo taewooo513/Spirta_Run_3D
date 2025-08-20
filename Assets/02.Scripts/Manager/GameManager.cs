@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public float playDistance; // 진행 거리
     bool isInv;
     
-    [HideInInspector] public Score score = new();
+    [HideInInspector] public Score score;
     
     private float _playTime;
 
