@@ -35,7 +35,7 @@
     "Description": "z축으로 1000만큼 이동했습니다.",
     "Type": "Distance",
     "GoalValue": 1000,
-    "IsCleared": false,
+    "IsCleared": true,
     "Reward": 100
   },
 
@@ -65,7 +65,7 @@
     "Description": "100점을 획득하였습니다.",
     "Type": "Score",
     "GoalValue": 100,
-    "IsCleared": false,
+    "IsCleared": true,
     "Reward": 100
   },
 
@@ -75,7 +75,7 @@
     "Description": "200점을 획득하였습니다.",
     "Type": "Score",
     "GoalValue": 200,
-    "IsCleared": false,
+    "IsCleared": true,
     "Reward": 200
   },
 
@@ -85,7 +85,7 @@
     "Description": "300점을 획득하였습니다.",
     "Type": "Score",
     "GoalValue": 300,
-    "IsCleared": false,
+    "IsCleared": true,
     "Reward": 300
   }
 ]
