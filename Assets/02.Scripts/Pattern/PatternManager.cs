@@ -11,6 +11,7 @@ public class PatternManager : Singleton<PatternManager>
     public Queue<GameObject> patternQueue;
     public int addStartCount;
     public float spawnDist;
+    public Vector3 startPos;
 
     public void Start()
     {
@@ -31,7 +32,7 @@ public class PatternManager : Singleton<PatternManager>
 
         if (patternQueue.Count <= 0)
         {
-            patternQueue.Enqueue(Instantiate(patterns[randPattern], Vector3.zero, Quaternion.identity));
+            patternQueue.Enqueue(Instantiate(patterns[randPattern], startPos, Quaternion.identity));
         }
         else
         {
