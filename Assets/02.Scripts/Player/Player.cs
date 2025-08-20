@@ -17,8 +17,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         CharacterManager.Instance.player = this;
-        // 현재 체력 -> 최대 체력
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; //현재 체력을 최대 체력으로 초기화
         CharacterManager.Instance.SetGamePlayerMaterial();
         if (uiManager != null)
         {
@@ -28,6 +27,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        if (uiManager.gmMode)  //gm 모드일때는 무적
+        {
+            Debug.Log("무적모드 : 충돌 무시");
+            return;
+        }
+        
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
         Debug.Log(tim);
@@ -56,10 +61,8 @@ public class Player : MonoBehaviour
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                //BuffManager.Instance.ApplySpeedBoost(item.val, item.maxTime);
                 Debug.Log("아이템 획득: " + item.name); 
                 item.GetItem();
-                //Debug.Log("스피드업 아이템 획득");
             }
         }
     }
