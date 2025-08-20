@@ -7,7 +7,7 @@ namespace _02.Scripts.map
         public float speed;
         private void Awake()
         {
-
+            
         }
 
         private void Start()
@@ -19,14 +19,7 @@ namespace _02.Scripts.map
             }
             else
             {
-                if (GameManager.Instance.map[0] == null)
-                {
-                    GameManager.Instance.map[0] = this;
-                }
-                else
-                {
-                    GameManager.Instance.map[1] = this;
-                }
+                GameManager.Instance.map[1] = this;
             }
         }
         void Update()

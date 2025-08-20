@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public bool gmMode;
     public GameObject menuPannel;
     public GameObject gameOverPannel;
     public Image[] heartImages; // 하트(체력) 변수
@@ -53,13 +52,6 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < heartImages.Length; i++)
         {
-            if (gmMode)
-            {
-                heartImages[i].color = Color.yellow;
-                heartImages[i+1].color = Color.yellow;
-                heartImages[i+2].color = Color.yellow;
-                return;
-            }
             // 현재 체력보다 인덱스가 크면 (잃어버린 체력 칸이면) 하트를 끈다
             if (i < currentHealth)
             {
