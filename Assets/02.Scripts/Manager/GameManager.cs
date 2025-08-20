@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateDistance()
     {
-        playDistance += Time.deltaTime * 100;
+        playDistance += map[0].speed * Time.deltaTime;
         AchievementManager.Instance.OnDistanceUpdated(playDistance);
     }
     public void UpdateTime()
@@ -84,5 +84,6 @@ public class GameManager : Singleton<GameManager>
         playDistance = 0;
         _playTime = 0;
         isInv = false;
+        Time.timeScale = 1f;
     }
 }

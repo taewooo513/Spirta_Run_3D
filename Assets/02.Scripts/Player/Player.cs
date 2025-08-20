@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
         CharacterManager.Instance.SetGamePlayerMaterial();
         if (uiManager != null)
         {
+            GameManager.Instance.score.SendThisUIManager(uiManager);
             uiManager.UpdateHealthUI(currentHealth);
         }
     }
