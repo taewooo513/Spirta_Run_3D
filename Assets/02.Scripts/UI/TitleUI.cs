@@ -20,4 +20,14 @@ public class TitleUI : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+
+    public void OnClickShopButton()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    public void OnClickTitleButton()
+    {
+        SceneManager.LoadScene("StandbyScene");
+    }
 }
