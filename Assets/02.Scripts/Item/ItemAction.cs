@@ -18,8 +18,8 @@ public partial class Item : MonoBehaviour // 여기서 버프사용시 함수만
     public void GetCoinItem()
     {
         AudioManager.Instance.PlayCoinSound();
-        GameManager.Instance.AddScore((int)val);
         GameManager.Instance.score.AddScore((int)val);
+        Debug.Log("코인 획득: " + val);
         Destroy(gameObject);
     }
 
