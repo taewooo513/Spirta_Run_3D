@@ -27,8 +27,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        //if (uiManager.gmMode) Debug.Log("무적모드 : 충돌 무시"); return; //gm 모드일때는 무적
-        
+        if (uiManager.gmMode)  //gm 모드일때는 무적
+        {
+            Debug.Log("무적모드 : 충돌 무시");
+            return;
+        }
+
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
         // 체력을 데미지만큼 감소시킵니다.

@@ -12065,6 +12065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801ed548ecc7c6241b1c01f26b7c2204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gmMode: 0
   menuPannel: {fileID: 236087660}
   gameOverPannel: {fileID: 1044232220}
   heartImages:
