@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        //if (uiManager.gmMode) return; //gm 모드일때는 무적
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
         Debug.Log(tim);
