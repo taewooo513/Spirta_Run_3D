@@ -16,6 +16,7 @@ public class AchievementManager : Singleton<AchievementManager>
         LoadAchievement();
         AchievementTest();
     }
+
     private void LoadAchievement()
     {
         if (!File.Exists(achievementPath))
@@ -34,6 +35,7 @@ public class AchievementManager : Singleton<AchievementManager>
             }
         }
     }
+
     private void AchievementTest()
     {
         Debug.Log("Achievement Test");
@@ -42,12 +44,14 @@ public class AchievementManager : Singleton<AchievementManager>
             Debug.Log($"ID: {achievement.Key}, Name: {achievement.Value.AchievementName}, Type: {achievement.Value.Type} Description: {achievement.Value.Description}, IsCleared: {achievement.Value.IsCleared}");
         }
     }
+
     public List<T> LoadJsonData<T>(string path)
     {
         string json = File.ReadAllText(path);
         return JsonConvert.DeserializeObject<List<T>>(json);
     }
 
+    //AchievementManager.Instance.GetAchievementClear()
     public bool[] GetAchievementClear() // 도전과제 깼는지 안깼는지를 가져오는 친구, 배열만 가져오는 역할
     {
         bool[] achievementClear = new bool[AchievementDict.Count];

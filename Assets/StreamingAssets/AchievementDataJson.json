@@ -1,6 +1,6 @@
 [
   {
-    "ID": 1,
+    "ID": 100,
     "AchievementName": "100초 버티기!",
     "Description": "100초 동안 생존했습니다.",
     "Type": "Time",
@@ -8,8 +8,29 @@
     "IsCleared": false,
     "Reward": 50
   },
+
   {
-    "ID": 2,
+    "ID": 101,
+    "AchievementName": "200초 버티기!",
+    "Description": "200초 동안 생존했습니다.",
+    "Type": "Time",
+    "GoalValue": 200,
+    "IsCleared": false,
+    "Reward": 100
+  },
+
+  {
+    "ID": 102,
+    "AchievementName": "300초 버티기!",
+    "Description": "300초 동안 생존했습니다.",
+    "Type": "Time",
+    "GoalValue": 300,
+    "IsCleared": false,
+    "Reward": 200
+  },
+
+  {
+    "ID": 110,
     "AchievementName": "1000만큼 달리기!",
     "Description": "z축으로 1000만큼 이동했습니다.",
     "Type": "Distance",
@@ -17,13 +38,54 @@
     "IsCleared": false,
     "Reward": 100
   },
+
   {
-    "ID": 3,
+    "ID": 111,
+    "AchievementName": "2000만큼 달리기!",
+    "Description": "z축으로 2000만큼 이동했습니다.",
+    "Type": "Distance",
+    "GoalValue": 2000,
+    "IsCleared": false,
+    "Reward": 200
+  },
+
+  {
+    "ID": 112,
+    "AchievementName": "3000만큼 달리기!",
+    "Description": "z축으로 3000만큼 이동했습니다.",
+    "Type": "Distance",
+    "GoalValue": 3000,
+    "IsCleared": false,
+    "Reward": 300
+  },
+
+  {
+    "ID": 120,
     "AchievementName": "100점!",
     "Description": "100점을 획득하였습니다.",
     "Type": "Score",
     "GoalValue": 100,
     "IsCleared": false,
     "Reward": 100
+  },
+
+  {
+    "ID": 121,
+    "AchievementName": "200점!",
+    "Description": "200점을 획득하였습니다.",
+    "Type": "Score",
+    "GoalValue": 200,
+    "IsCleared": false,
+    "Reward": 200
+  },
+
+  {
+    "ID": 122,
+    "AchievementName": "300점!",
+    "Description": "300점을 획득하였습니다.",
+    "Type": "Score",
+    "GoalValue": 300,
+    "IsCleared": false,
+    "Reward": 300
   }
 ]
