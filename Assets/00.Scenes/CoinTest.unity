@@ -394,6 +394,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f6dc5849ac1c4e97869a0a67e84f25c, type: 3}
   - {fileID: 8300000, guid: 74add305a869846f9bb1d896720cbd0f, type: 3}
   - {fileID: 8300000, guid: de3d875ad25864e0a8372a0105432575, type: 3}
+  sounds: []
+  soundsKey: 
 --- !u!82 &1062631534
 AudioSource:
   m_ObjectHideFlags: 0
@@ -641,6 +643,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2121211308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121211310}
+  - component: {fileID: 2121211309}
+  m_Layer: 0
+  m_Name: AchievementTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2121211309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121211308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40a7bd7ce06fa429af4fc11712b6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2121211310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121211308}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.773127, y: -56.45845, z: 93.58993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8628288930773861924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,3 +770,4 @@ SceneRoots:
   - {fileID: 8628288930773861924}
   - {fileID: 1062631535}
   - {fileID: 2015227949}
+  - {fileID: 2121211310}
