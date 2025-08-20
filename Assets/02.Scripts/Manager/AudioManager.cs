@@ -34,8 +34,14 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlaySoundEffect(SoundKey key)
     {
+        if (sounds == null)
+        {
+            Debug.LogWarning("No Sounds List");
+
+            return;
+        }
         int index = (int)key;
-        if (index >= sounds.Length)
+        if (index >= sounds?.Length)
         {
             if (sounds[index] == null)
             {
@@ -48,14 +54,19 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            Debug.LogWarning($"{key}is out of range to  sounds {sounds.Length}.");
+            Debug.LogWarning($"{key}is out of range to  sounds {sounds?.Length}.");
         }
     }
 
     public void PlayLoopSound(SoundKey key)
     {
         int index = (int)key;
-        if (index >= sounds.Length)
+        if (sounds == null)
+        {
+            Debug.LogWarning("No Sounds List");
+            return;
+        }
+        if (index >= sounds?.Length)
         {
             if (coinSound == null)
             {
@@ -83,13 +94,13 @@ public class AudioManager : Singleton<AudioManager>
 
     private SoundKey RandomToSoundKey(SoundKey minNumber, SoundKey maxNumber)
     {
-        int val = int.Parse(maxNumber.ToString()) - int.Parse(minNumber.ToString());
+        int val = (int)maxNumber - (int)minNumber;
         if (val < 0)
         {
             Debug.LogError("maxNumber < minNumber");
             return SoundKey.SoundErr;
         }
-         
+
         return (SoundKey)UnityEngine.Random.Range(0, val);
     }
 }
