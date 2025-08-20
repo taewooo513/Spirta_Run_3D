@@ -1,52 +1,95 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum SoundKey
+{
+    eCarCrashA,
+    eCarCrashB,
+    eCarCrashC,
+    eCoin,
+    SoundCount,
+    SoundErr
+}
 
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private AudioClip[] carCrashSound;
     private AudioSource audioSource;
-
+    [SerializeField]
+    private AudioClip[] sounds;
+    [SerializeField]
+    private SoundKey[] soundsKey;
     private void Start()
-    { 
+    {
         audioSource = GetComponent<AudioSource>();
-        if(audioSource == null)
+        if (audioSource == null)
         {
             this.gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
         }
     }
-    public void PlayCoinSound()
+
+    public void PlaySoundEffect(SoundKey key)
     {
-        if (coinSound != null)
+        int index = (int)key;
+        if (index >= sounds.Length)
         {
-            audioSource?.PlayOneShot(coinSound);
+            if (sounds[index] == null)
+            {
+                Debug.LogWarning("Coin sound not assigned in AudioManager.");
+            }
+            else
+            {
+                audioSource.PlayOneShot(sounds[index]);
+            }
         }
         else
         {
-            Debug.LogWarning("Coin sound not assigned in AudioManager.");
+            Debug.LogWarning($"{key}is out of range to  sounds {sounds.Length}.");
         }
+    }
+
+    public void PlayLoopSound(SoundKey key)
+    {
+        int index = (int)key;
+        if (index >= sounds.Length)
+        {
+            if (coinSound == null)
+            {
+                Debug.LogWarning("Coin sound not assigned in AudioManager.");
+            }
+            else
+            {
+                //audioSource.Play(sounds[index]);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{key}is out of range to  sounds {sounds.Length}.");
+        }
+    }
+    public void PlayCoinSound()
+    {
+        PlaySoundEffect(SoundKey.eCoin);
     }
     public void PlayCarCrashSound()
     {
-        if (carCrashSound?.Length > 0)
-        {
-            audioSource?.PlayOneShot(GetRandomCarCrashSound());
-        }
-        else
-        {
-            Debug.LogWarning("Car crash sounds not assigned in AudioManager.");
-        }
+        PlaySoundEffect(RandomToSoundKey(SoundKey.eCarCrashA, SoundKey.eCarCrashC));
     }
-    private AudioClip GetRandomCarCrashSound()
+
+
+    private SoundKey RandomToSoundKey(SoundKey minNumber, SoundKey maxNumber)
     {
-        if (carCrashSound.Length == 0)
+        int val = int.Parse(maxNumber.ToString()) - int.Parse(minNumber.ToString());
+        if (val < 0)
         {
-            Debug.LogWarning("No car crash sounds available.");
-            return null;
+            Debug.LogError("maxNumber < minNumber");
+            return SoundKey.SoundErr;
         }
-        int randomIndex = Random.Range(0, carCrashSound.Length);
-        return carCrashSound[randomIndex];
+         
+        return (SoundKey)UnityEngine.Random.Range(0, val);
     }
 }
