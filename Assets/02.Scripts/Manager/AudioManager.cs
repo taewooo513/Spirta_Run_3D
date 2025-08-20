@@ -60,6 +60,12 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayLoopSound(SoundKey key)
     {
+        if (sounds == null)
+        {
+            Debug.LogWarning("No Sounds List");
+
+            return;
+        }
         int index = (int)key;
         if (sounds == null)
         {
