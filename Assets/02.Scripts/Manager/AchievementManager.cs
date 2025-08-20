@@ -14,6 +14,7 @@ public class AchievementManager : Singleton<AchievementManager>
     {
         base.Awake();
         LoadAchievement();
+        AchievementTest();
     }
     private void LoadAchievement()
     {
@@ -33,7 +34,14 @@ public class AchievementManager : Singleton<AchievementManager>
             }
         }
     }
-
+    private void AchievementTest()
+    {
+        Debug.Log("Achievement Test");
+        foreach (var achievement in AchievementDict)
+        {
+            Debug.Log($"ID: {achievement.Key}, Name: {achievement.Value.AchievementName}, Type: {achievement.Value.Type} Description: {achievement.Value.Description}, IsCleared: {achievement.Value.IsCleared}");
+        }
+    }
     public List<T> LoadJsonData<T>(string path)
     {
         string json = File.ReadAllText(path);
@@ -51,6 +59,4 @@ public class AchievementManager : Singleton<AchievementManager>
         }
         return achievementClear;
     }
-
-
 }

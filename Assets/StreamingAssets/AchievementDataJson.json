@@ -1,0 +1,29 @@
+[
+  {
+    "ID": 1,
+    "AchievementName": "100초 버티기!",
+    "Description": "100초 동안 생존했습니다.",
+    "Type": "Time",
+    "GoalValue": 100,
+    "IsCleared": false,
+    "Reward": 50
+  },
+  {
+    "ID": 2,
+    "AchievementName": "1000만큼 달리기!",
+    "Description": "z축으로 1000만큼 이동했습니다.",
+    "Type": "Distance",
+    "GoalValue": 1000,
+    "IsCleared": false,
+    "Reward": 100
+  },
+  {
+    "ID": 3,
+    "AchievementName": "100점!",
+    "Description": "100점을 획득하였습니다.",
+    "Type": "Score",
+    "GoalValue": 100,
+    "IsCleared": false,
+    "Reward": 100
+  }
+]
