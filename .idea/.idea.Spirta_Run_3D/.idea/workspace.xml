@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
-    "git-widget-placeholder": "feat/map",
+    "git-widget-placeholder": "feat/UI",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
