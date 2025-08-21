@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,31 +15,33 @@ public class PlayerController : MonoBehaviour
     public Vector3 laneChangeEffectOffset = new Vector3(0, 0.5f, 4f);
     public Vector3 jumpEffectOffset = new Vector3(0, 100f, 0f);
 
-    // ¼³Á¤ °ª
-    public float forwardSpeed = 0f;
+Â  Â  // ì„¤ì • ê°’
+Â  Â  public float forwardSpeed = 0f;
     public float jumpForce = 8f;
 
-    // ·¹ÀÎ ÀÌµ¿ °ü·Ã º¯¼ö
-    private int currentLane = 0; // ÇöÀç ·¹ÀÎ (-1: ¿ŞÂÊ, 0: Áß¾Ó, 1: ¿À¸¥ÂÊ)
+Â  Â  // ë ˆì¸ ì´ë™ ê´€ë ¨ ë³€ìˆ˜
+Â  Â  private int currentLane = 0;
     public float laneWidth = 4f;
-    public float laneChangeSpeed = 15f; // ·¹ÀÎÀÌ ¹Ù²î´Â ¼Óµµ
+    public float laneChangeSpeed = 15f; // ë ˆì¸ì´ ë°”ë€ŒëŠ” ì†ë„
+    public float laneChangeEffectDelay = 0.15f; // ì´í™íŠ¸ ì§€ì—° ì‹œê°„
 
-    // ½½¶óÀÌµå °ª
-    private float originalColliderHeight;
+Â  Â  // ìŠ¬ë¼ì´ë“œ ê°’
+Â  Â  private float originalColliderHeight;
     private Vector3 originalColliderCenter;
     public float slideColliderHeight = 0.9f;
     public Vector3 slideColliderCenter = new Vector3(0, 0.45f, 0);
     public float slideDuration = 1.0f;
 
-    // »óÅÂ º¯¼ö
-    private bool isSliding = false;
+Â  Â  // ìƒíƒœ ë³€ìˆ˜
 
-    // ´õºí Á¡ÇÁ & Áö¸é Ã¼Å© º¯¼ö
+Â  Â  private bool isSliding = false;
+    private bool isJumping = false;
+
     public int maxJumps = 2;
     private int jumpCount;
     private bool isGrounded;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.1f;
 
     void Start()
     {
@@ -52,85 +54,107 @@ public class PlayerController : MonoBehaviour
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Slide");
     }
-
     void Update()
     {
         isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundDistance);
-
         if (isGrounded)
         {
             jumpCount = 0;
         }
 
+        int previousLane = currentLane;
         if (Input.GetKeyDown(KeyCode.A))
         {
-            currentLane--;
             PlayLaneChangeEffect();
+            currentLane--;
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            currentLane++;
             PlayLaneChangeEffect();
+            currentLane++;
         }
+        //if (currentLane != previousLane)
+        //{
+        //    StartCoroutine(PlayLaneChangeEffect());
+        //}
 
-        // ÇöÀç ·¹ÀÎÀÌ -1 ~ 1 »çÀÌ¸¦ ¹ş¾î³ªÁö ¾Êµµ·Ï Á¦ÇÑ
         currentLane = Mathf.Clamp(currentLane, -1, 1);
 
-        // ¸ñÇ¥ x À§Ä¡ °è»ê (-4, 0, 4)
         Vector3 targetPosition = transform.position;
         targetPosition.x = currentLane * laneWidth;
 
-        // ÇöÀç À§Ä¡¿¡¼­ ¸ñÇ¥ À§Ä¡·Î ºÎµå·´°Ô ÀÌµ¿ (Lerp »ç¿ë)
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * laneChangeSpeed);
+Â  Â  Â  Â  // í˜„ì¬ ìœ„ì¹˜ì—ì„œ ëª©í‘œ ìœ„ì¹˜ë¡œ ë¶€ë“œëŸ½ê²Œ ì´ë™ (Lerp ì‚¬ìš©)
+Â  Â  Â  Â  transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * laneChangeSpeed);
 
-
-        // Á¡ÇÁ ÀÔ·Â Á¶°Ç
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
         {
+            isJumping = true;
             Jump();
+            if(isGrounded == true)
+            {
+                isJumping = false;
+            }
         }
 
-        // ½½¶óÀÌµå ÀÔ·Â Á¶°Ç
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isSliding)
+Â  Â  Â  Â  // ìŠ¬ë¼ì´ë“œ ì…ë ¥ ì¡°ê±´
+
+Â  Â  Â  Â  if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && !isJumping/*&& isGrounded*/)
         {
             StartCoroutine(Slide());
         }
     }
-
     void Jump()
     {
+        isJumping = true;
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetTrigger("Jump");
         jumpCount++;
+
         if (jumpEffectPrefab != null)
         {
             Vector3 effectPosition = transform.position + jumpEffectOffset;
             Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
         }
+        isJumping = false;
     }
+
+    //IEnumerator PlayLaneChangeEffect()
+    //{
+    //    yield return new WaitForSeconds(laneChangeEffectDelay);
+
+    //    if (laneChangeEffectPrefab != null)
+    //    {
+    //        Vector3 effectPosition = transform.position + laneChangeEffectOffset;
+    //        Instantiate(laneChangeEffectPrefab, effectPosition, Quaternion.identity);
+    //    }
+    //}
+
     public void PlayLaneChangeEffect()
     {
         if (laneChangeEffectPrefab != null)
         {
-            Vector3 effectPosition = transform.position + laneChangeEffectOffset;
-            Instantiate(laneChangeEffectPrefab, effectPosition, Quaternion.identity);
+            Instantiate(laneChangeEffectPrefab, transform.position, Quaternion.identity);
         }
     }
+
     IEnumerator Slide()
     {
         isSliding = true;
         GameObject slideEffectInstance = null;
         animator.SetTrigger("Slide");
+
         if (slideEffectPrefab != null)
         {
             slideEffectInstance = Instantiate(slideEffectPrefab, transform.position, Quaternion.identity);
         }
+
         capsuleCollider.height = slideColliderHeight;
         capsuleCollider.center = slideColliderCenter;
         yield return new WaitForSeconds(slideDuration);
         capsuleCollider.height = originalColliderHeight;
         capsuleCollider.center = originalColliderCenter;
+
         if (slideEffectInstance != null)
         {
             Destroy(slideEffectInstance);

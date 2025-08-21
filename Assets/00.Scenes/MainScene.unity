@@ -12068,7 +12068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801ed548ecc7c6241b1c01f26b7c2204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gmMode: 1
+  gmMode: 0
   menuPannel: {fileID: 236087660}
   gameOverPannel: {fileID: 1044232220}
   scoreUI: {fileID: 218790884}
@@ -12207,7 +12207,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.97590226, b: 0.8066038, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -30843,16 +30843,17 @@ MonoBehaviour:
   jumpEffectPrefab: {fileID: 2360655870356088562, guid: 57a776ff377f3c44e8403e2067a4d41f, type: 3}
   slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
   laneChangeEffectPrefab: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
-  laneChangeEffectOffset: {x: 0, y: 0.5, z: 1}
+  laneChangeEffectOffset: {x: 0, y: 0.5, z: 4}
   jumpEffectOffset: {x: 0, y: 10, z: 0}
   forwardSpeed: 0
-  jumpForce: 180
+  jumpForce: 200
   laneWidth: 4
   laneChangeSpeed: 15
+  laneChangeEffectDelay: 0
   slideColliderHeight: 0.9
   slideColliderCenter: {x: 0, y: 0.45, z: 0}
   slideDuration: 1
-  maxJumps: 2
+  maxJumps: 1
   groundCheck: {fileID: 991836728}
   groundDistance: 0.4
 --- !u!136 &1983417682
@@ -30877,7 +30878,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 1.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!95 &1983417683
 Animator:
   serializedVersion: 5
@@ -30932,6 +30933,7 @@ MonoBehaviour:
   uiManager: {fileID: 762700377}
   maxHealth: 3
   coinEffectPrefab: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
+  damageEffectPrefab: {fileID: 4553287630450876385, guid: 15483e51212e3d74886ea57291f4639a, type: 3}
   hair: {fileID: 1555645088}
   hair1: {fileID: 1313560180}
   hair2: {fileID: 347208299}
