@@ -21,7 +21,7 @@
 레퍼런스 게임 : [Subway Surfers](https://namu.wiki/w/Subway%20Surfers)
 - 무한히 이어지는 맵에서 끝없이 달리며 장애물을 피하고 점수를 모아 최대 점수를 달성하는 **3D 러닝 액션게임**.
 
-(설명)
+![게임화면](https://github.com/taewooo513/Spirta_Run_3D/blob/main/finish.png)
 
 <br>
 
