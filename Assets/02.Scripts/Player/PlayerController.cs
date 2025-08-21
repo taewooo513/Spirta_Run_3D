@@ -6,9 +6,14 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
+    private Player player;
 
     public GameObject jumpEffectPrefab;
     public GameObject slideEffectPrefab;
+    public GameObject laneChangeEffectPrefab;
+
+    public Vector3 laneChangeEffectOffset = new Vector3(0, 0.5f, 4f);
+    public Vector3 jumpEffectOffset = new Vector3(0, 100f, 0f);
 
     // 설정 값
     public float forwardSpeed = 0f;
@@ -60,11 +65,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             currentLane--;
+            PlayLaneChangeEffect();
         }
-
         if (Input.GetKeyDown(KeyCode.D))
         {
             currentLane++;
+            PlayLaneChangeEffect();
         }
 
         // 현재 레인이 -1 ~ 1 사이를 벗어나지 않도록 제한
@@ -79,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
 
         // 점프 입력 조건
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps && !isSliding)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
         {
             Jump();
         }
@@ -99,10 +105,18 @@ public class PlayerController : MonoBehaviour
         jumpCount++;
         if (jumpEffectPrefab != null)
         {
+            Vector3 effectPosition = transform.position + jumpEffectOffset;
             Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
         }
     }
-
+    public void PlayLaneChangeEffect()
+    {
+        if (laneChangeEffectPrefab != null)
+        {
+            Vector3 effectPosition = transform.position + laneChangeEffectOffset;
+            Instantiate(laneChangeEffectPrefab, effectPosition, Quaternion.identity);
+        }
+    }
     IEnumerator Slide()
     {
         isSliding = true;

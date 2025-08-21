@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private int currentHealth;
 
     public GameObject coinEffectPrefab;
+    //public GameObject laneChangeEffectPrefab;
 
     [Header("PlayerModel")]
     public SkinnedMeshRenderer hair;
@@ -72,6 +73,14 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    //public void PlayLaneChangeEffect()
+    //{
+    //    if (laneChangeEffectPrefab != null)
+    //    {
+    //        Instantiate(laneChangeEffectPrefab, transform.position, Quaternion.identity);
+    //    }
+    //}
 
     private void GameOver()
     {
