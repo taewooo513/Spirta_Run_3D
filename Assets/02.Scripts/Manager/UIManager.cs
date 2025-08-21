@@ -12,11 +12,6 @@ public class UIManager : MonoBehaviour
     public ScoreUI scoreUI;
     public Image[] heartImages; // 하트(체력) 변수
 
-
-    private void Start()
-    {
-        CharacterManager.Instance.player.uiManager = this;
-    }
     public void Stop()
     {
         Time.timeScale = 0; //시간 0으로 해서 멈춤
