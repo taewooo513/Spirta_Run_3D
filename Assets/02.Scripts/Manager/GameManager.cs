@@ -17,6 +17,29 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public int TopScore;
     [HideInInspector] public int Coin;
     [HideInInspector] public int Jewel;
+    [HideInInspector] public Dictionary<int, Customize> hairDict = new();
+    [HideInInspector] public Dictionary<int, Customize> clothesDict = new();
+    
+    public void HairInit()
+    {
+        hairDict.Add(0, new Customize("#FF0000", CustomizeType.Hair, 50, false));
+        hairDict.Add(1, new Customize("#FF8100", CustomizeType.Hair, 50, false));
+        hairDict.Add(2, new Customize("#FFFD00", CustomizeType.Hair, 50, false));
+        hairDict.Add(3, new Customize("#15FF00", CustomizeType.Hair, 50, false));
+        hairDict.Add(4, new Customize("#00BDFF", CustomizeType.Hair, 50, false));
+        hairDict.Add(5, new Customize("#0046FF", CustomizeType.Hair, 50, false));
+        hairDict.Add(6, new Customize("#C600FF", CustomizeType.Hair, 50, false));
+    }
+    public void ClothesInit()
+    {
+        clothesDict.Add(0, new Customize("#FF0000", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(1, new Customize("#FF8100", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(2, new Customize("#FFFD00", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(3, new Customize("#15FF00", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(4, new Customize("#00BDFF", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(5, new Customize("#0046FF", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(6, new Customize("#C600FF", CustomizeType.Clothes, 50, false));
+    }
 
     public void InitGame()
     {
