@@ -1,32 +1,25 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Video;
 
 public partial class Item : MonoBehaviour
 {
-    public UnityEvent useItemAction; // 아이템 사용 시 호출하는 함수
-
-    public float maxTime; // 버프지속시간
-    public float val; // 수치 ex). 이속증가 얼마나되는지등
+    [Header("Item Settings")]
+    public float maxTime; // 버프 지속시간
+    public float val;     // 효과 수치 (점수, 속도 배율 등)
 
     [Header("Effects")]
-    public GameObject collectionEffectPrefab; 
-    public VideoClip videoToPlay; 
+    public GameObject collectionEffectPrefab;        
 
+    [Header("Actions")]
+    public UnityEvent useItemAction;
     public void GetItem()
     {
-        // 이펙트 생성
+        Debug.Log("함수가 호출되었습니다!");
         if (collectionEffectPrefab != null)
         {
             Instantiate(collectionEffectPrefab, transform.position, Quaternion.identity);
         }
-
-        // 비디오 재생 요청
-        if (videoToPlay != null)
-        {
-            VideoManager.Instance.PlayVideo(videoToPlay);
-        }
-
+        // 인스펙터에 연결된 추가 기능
         useItemAction?.Invoke();
 
         Destroy(gameObject);

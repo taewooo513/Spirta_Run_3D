@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e5a3c0f4d439d4eaf6ac1481edfa4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTime: 10
+  val: 50
+  collectionEffectPrefab: {fileID: 0}
+  videoToPlay: {fileID: 32900000, guid: e2d18f4df1133e64db8b8949f9f73227, type: 3}
   useItemAction:
     m_PersistentCalls:
       m_Calls:
@@ -63,8 +67,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxTime: 10
-  val: 50
 --- !u!136 &-5793011917029205508
 CapsuleCollider:
   m_ObjectHideFlags: 0
