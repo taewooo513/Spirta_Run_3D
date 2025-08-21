@@ -472,10 +472,10 @@ Transform:
   - {fileID: 400004}
   - {fileID: 400002}
   - {fileID: 400000}
-  - {fileID: 498603015628769685}
+  - {fileID: 5408277510250136782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &937762505800659965
+--- !u!1 &747984604237442064
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,9 +483,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 498603015628769685}
-  - component: {fileID: 2251722844179366846}
-  - component: {fileID: 9106636894291106105}
+  - component: {fileID: 5408277510250136782}
+  - component: {fileID: 4958987935285613030}
+  - component: {fileID: 7164416360694669807}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: Untagged
@@ -493,13 +493,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &498603015628769685
+--- !u!4 &5408277510250136782
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937762505800659965}
+  m_GameObject: {fileID: 747984604237442064}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -5.11}
@@ -508,13 +508,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2251722844179366846
+--- !u!65 &4958987935285613030
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937762505800659965}
+  m_GameObject: {fileID: 747984604237442064}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -527,15 +527,15 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.1727815, y: 3.342288, z: 0.07222891}
-  m_Center: {x: -0.018413305, y: 1.6686983, z: 0.11981797}
---- !u!114 &9106636894291106105
+  m_Size: {x: 3.1727815, y: 3.2960453, z: 0.07222891}
+  m_Center: {x: -0.018413305, y: 1.645577, z: 0.11981797}
+--- !u!114 &7164416360694669807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937762505800659965}
+  m_GameObject: {fileID: 747984604237442064}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0c2c453b9994314791d252eaae1bd6a, type: 3}
