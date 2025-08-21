@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public bool gmMode;
+
     public GameObject menuPannel;
     public GameObject gameOverPannel;
     public ScoreUI scoreUI;
