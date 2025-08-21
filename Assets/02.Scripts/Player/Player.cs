@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public SkinnedMeshRenderer hair2;
     public SkinnedMeshRenderer clothes;
 
+    public GameObject coinEffectPrefab;
+
     float tim = 0;
 
     void Start()
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
         CharacterManager.Instance.SetGamePlayerMaterial();
         if (uiManager != null)
         {
+            GameManager.Instance.score.SendThisUIManager(uiManager);
             uiManager.UpdateHealthUI(currentHealth);
         }
     }
@@ -32,9 +35,10 @@ public class Player : MonoBehaviour
             Debug.Log("무적모드 : 충돌 무시");
             return;
         }
-
+        
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
+        Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
         currentHealth -= damageAmount;
 
@@ -49,6 +53,25 @@ public class Player : MonoBehaviour
         if (currentHealth <= 0)
         {
             GameOver();
+        }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        // Item 태그로 충돌 판정
+        if (other.CompareTag("Item")) 
+        {
+            Item item = other.GetComponent<Item>();
+            if (item != null)
+            {
+                Debug.Log("아이템 획득: " + item.name); 
+                item.GetItem();
+            }
+
+            if (coinEffectPrefab != null)
+            {
+                Instantiate(coinEffectPrefab, transform.position, Quaternion.identity);
+            }
         }
     }
 

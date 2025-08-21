@@ -18,9 +18,10 @@ namespace _02.Scripts.map
                 GameManager.Instance.map[0] = this;
             }
             else
-            {
-                if (GameManager.Instance.map[0] == null)
+            {//
+                if (GameManager.Instance.map.Length == 2)
                 {
+                    GameManager.Instance.map = new Map[2];
                     GameManager.Instance.map[0] = this;
                 }
                 else

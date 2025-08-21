@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject menuPannel;
     public GameObject gameOverPannel;
+    public ScoreUI scoreUI;
     public Image[] heartImages; // 하트(체력) 변수
 
     private void Start()
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     public void ReStart()
     {
+        GameManager.Instance.score.InitializeScore(); //점수 초기화
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //현재 씬 다시불러오기
@@ -33,19 +35,18 @@ public class UIManager : MonoBehaviour
     {
         menuPannel.SetActive(false);
         Time.timeScale = 1f;
-        
     }
 
     public void Exit()
     {
         Debug.Log("나가기 기능");
-        UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        SceneManager.LoadScene("StandbyScene");
     }
 
     public void GameOver()
     {
         Debug.Log("게임오버");
+        GameManager.Instance.Coin += GameManager.Instance.score.CurScore;
         Time.timeScale = 0f;
         gameOverPannel.SetActive(true);
     }
