@@ -17,6 +17,29 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public int TopScore;
     [HideInInspector] public int Coin;
     [HideInInspector] public int Jewel;
+    [HideInInspector] public Dictionary<int, Customize> hairDict = new();
+    [HideInInspector] public Dictionary<int, Customize> clothesDict = new();
+    
+    public void HairInit()
+    {
+        hairDict.Add(0, new Customize("#FF0000", CustomizeType.Hair, 50, false));
+        hairDict.Add(1, new Customize("#FF8100", CustomizeType.Hair, 100, false));
+        hairDict.Add(2, new Customize("#FFFD00", CustomizeType.Hair, 150, false));
+        hairDict.Add(3, new Customize("#15FF00", CustomizeType.Hair, 200, false));
+        hairDict.Add(4, new Customize("#00BDFF", CustomizeType.Hair, 200, false));
+        hairDict.Add(5, new Customize("#0046FF", CustomizeType.Hair, 250, false));
+        hairDict.Add(6, new Customize("#C600FF", CustomizeType.Hair, 300, false));
+    }
+    public void ClothesInit()
+    {
+        clothesDict.Add(0, new Customize("#FF0000", CustomizeType.Clothes, 50, false));
+        clothesDict.Add(1, new Customize("#FF8100", CustomizeType.Clothes, 100, false));
+        clothesDict.Add(2, new Customize("#FFFD00", CustomizeType.Clothes, 150, false));
+        clothesDict.Add(3, new Customize("#15FF00", CustomizeType.Clothes, 200, false));
+        clothesDict.Add(4, new Customize("#00BDFF", CustomizeType.Clothes, 200, false));
+        clothesDict.Add(5, new Customize("#0046FF", CustomizeType.Clothes, 250, false));
+        clothesDict.Add(6, new Customize("#C600FF", CustomizeType.Clothes, 300, false));
+    }
 
     public void InitGame()
     {
@@ -46,16 +69,26 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void GetInvItem(float maxTime)
+    public void GetInvItem(float maxTime, float val)
     {
-        StartCoroutine(GetSpeedItemBuff(maxTime));
+        StartCoroutine(GetInvItemBuff(maxTime, val));
     }
 
-    IEnumerator GetSpeedItemBuff(float maxTime)
+    IEnumerator GetInvItemBuff(float maxTime,float val)
     {
-        isInv = true;
+        CharacterManager.Instance.player.isInv = true;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = val;
+        }
         yield return new WaitForSeconds(maxTime);
-        isInv = false;
+        CharacterManager.Instance.player.isInv = false;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = speed;
+        }
     }
     public void GetSpeedUpItem(float val, float maxTime)
     {

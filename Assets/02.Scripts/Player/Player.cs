@@ -6,12 +6,17 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     private int currentHealth;
 
+    public GameObject coinEffectPrefab;
+    public GameObject damageEffectPrefab;
+    //public GameObject laneChangeEffectPrefab;
+
     [Header("PlayerModel")]
     public SkinnedMeshRenderer hair;
     public SkinnedMeshRenderer hair1;
     public SkinnedMeshRenderer hair2;
     public SkinnedMeshRenderer clothes;
 
+    public bool isInv = false;
     float tim = 0;
 
     void Start()
@@ -33,11 +38,20 @@ public class Player : MonoBehaviour
             Debug.Log("무적모드 : 충돌 무시");
             return;
         }
-        
+
+        if(isInv == true)
+        {
+            Debug.Log("무적 아이템");
+            return;
+        }
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
         Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
+        if (damageEffectPrefab != null)
+        {
+            Instantiate(damageEffectPrefab, transform.position, Quaternion.identity);
+        }
         currentHealth -= damageAmount;
 
         if (uiManager != null)
@@ -53,21 +67,33 @@ public class Player : MonoBehaviour
             GameOver();
         }
     }
-    
+
+    public void AddHeal()
+    {
+        currentHealth++;
+
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // Item 태그로 충돌 판정
-        if (other.CompareTag("Item")) 
+        if (other.CompareTag("Item"))
         {
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                Debug.Log("아이템 획득: " + item.name); 
                 item.GetItem();
+            }
+            if (coinEffectPrefab != null)
+            {
+                Instantiate(coinEffectPrefab, transform.position, Quaternion.identity);
             }
         }
     }
-
     private void GameOver()
     {
         Debug.Log("게임 오버!");
