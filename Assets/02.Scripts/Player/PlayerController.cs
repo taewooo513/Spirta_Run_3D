@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject slideEffectPrefab;
 
     // 설정 값
-    public float forwardSpeed = 8f;
+    public float forwardSpeed = 0f;
     public float sideSpeed = 5f;
     public float jumpForce = 8f;
 
@@ -25,6 +25,13 @@ public class PlayerController : MonoBehaviour
     //슬라이드 중 점프 막기 위한 isSliding
     private bool isSliding = false;
 
+    // 더블 점프 & 지면 체크 변수
+    public int maxJumps = 2; 
+    private int jumpCount;  
+
+    private bool isGrounded; 
+    public Transform groundCheck; 
+    public float groundDistance = 0.4f; 
 
     void Start()
     {
@@ -43,6 +50,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundDistance);
+
+        // 땅에 닿아있다면, 점프 횟수를 초기화
+        if (isGrounded)
+        {
+            jumpCount = 0;
+        }
+
         // 항상 앞으로 이동
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
 
@@ -50,15 +65,13 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * sideSpeed * Time.deltaTime);
 
-        // 점프 입력 (스페이스 바)
-        if (Input.GetKeyDown(KeyCode.Space) && !isSliding)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps && !isSliding)
         {
             Jump();
         }
 
-        // 슬라이드 입력 (왼쪽 컨트롤 키)
-        // 키 입력 시간동안 지속되어야되기때문에 코루틴을 사용 해야될거같다.
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding)
+        // 슬라이드 입력 조건
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isSliding)
         {
             StartCoroutine(Slide());
         }
@@ -68,6 +81,9 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetTrigger("Jump");
+
+        // 점프 횟수를 1 증가시킵니다.
+        jumpCount++;
 
         if (jumpEffectPrefab != null)
         {
