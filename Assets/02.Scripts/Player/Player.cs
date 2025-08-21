@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private int currentHealth;
 
     public GameObject coinEffectPrefab;
+    public GameObject damageEffectPrefab;
     //public GameObject laneChangeEffectPrefab;
 
     [Header("PlayerModel")]
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour
         tim += Time.deltaTime;
         Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
+        if (damageEffectPrefab != null)
+        {
+            Instantiate(damageEffectPrefab, transform.position, Quaternion.identity);
+        }
         currentHealth -= damageAmount;
 
         if (uiManager != null)
@@ -73,15 +78,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-    //public void PlayLaneChangeEffect()
-    //{
-    //    if (laneChangeEffectPrefab != null)
-    //    {
-    //        Instantiate(laneChangeEffectPrefab, transform.position, Quaternion.identity);
-    //    }
-    //}
-
     private void GameOver()
     {
         Debug.Log("게임 오버!");
