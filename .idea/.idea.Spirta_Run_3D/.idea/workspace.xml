@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/71/0f9568b0/Component.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/unity/Spirta_Run_3D/Assets/02.Scripts/Manager/UIManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/unity/Spirta_Run_3D/Assets/02.Scripts/Manager/UIManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/Manager/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/Outline.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/02.Scripts/Scriptable.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
