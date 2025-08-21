@@ -18,7 +18,7 @@ namespace _02.Scripts.map
                 GameManager.Instance.map[0] = this;
             }
             else
-            {//
+            {
                 if (GameManager.Instance.map[1] != null)
                 {
                     GameManager.Instance.map = new Map[2];
@@ -26,6 +26,7 @@ namespace _02.Scripts.map
                 }
                 else
                 {
+                    Debug.Log("bb");
                     GameManager.Instance.map[1] = this;
                 }
             }

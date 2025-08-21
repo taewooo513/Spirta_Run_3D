@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("게임오버");
         GameManager.Instance.Coin += GameManager.Instance.score.CurScore;
         Time.timeScale = 0f;
         gameOverPannel.SetActive(true);

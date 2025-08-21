@@ -14,12 +14,12 @@ public partial class Item : MonoBehaviour
     public UnityEvent useItemAction;
     public void GetItem()
     {
-        Debug.Log("함수가 호출되었습니다!");
         if (collectionEffectPrefab != null)
         {
             Instantiate(collectionEffectPrefab, transform.position, Quaternion.identity);
         }
         // 인스펙터에 연결된 추가 기능
+        Debug.Log("ㅁㅈ");
         useItemAction?.Invoke();
     }
 

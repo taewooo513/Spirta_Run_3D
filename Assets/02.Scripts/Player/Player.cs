@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
         }
         if (currentHealth <= 0) return;
         tim += Time.deltaTime;
-        Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
         if (damageEffectPrefab != null)
         {
@@ -58,8 +57,6 @@ public class Player : MonoBehaviour
         {
             uiManager.UpdateHealthUI(currentHealth);
         }
-
-        Debug.Log("데미지를 입었습니다! 현재 체력: " + currentHealth);
 
         // 체력이 0 이하가 되면 게임 오버 처리
         if (currentHealth <= 0)
@@ -75,6 +72,10 @@ public class Player : MonoBehaviour
         if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
+        }
+        if (uiManager != null)
+        {
+            uiManager.UpdateHealthUI(currentHealth);
         }
     }
 

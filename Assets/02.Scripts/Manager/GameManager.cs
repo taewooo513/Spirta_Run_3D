@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public int Jewel;
     [HideInInspector] public Dictionary<int, Customize> hairDict = new();
     [HideInInspector] public Dictionary<int, Customize> clothesDict = new();
-    
+
     public void HairInit()
     {
         hairDict.Add(0, new Customize("#FF0000", CustomizeType.Hair, 50, false));
@@ -74,19 +74,18 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(GetInvItemBuff(maxTime, val));
     }
 
-    IEnumerator GetInvItemBuff(float maxTime,float val)
+    IEnumerator GetInvItemBuff(float maxTime, float val)
     {
         CharacterManager.Instance.player.isInv = true;
+        float speed = map[0].speed;
         for (int i = 0; i < 2; i++)
         {
-            float speed = map[i].speed;
             map[i].speed = val;
         }
         yield return new WaitForSeconds(maxTime);
         CharacterManager.Instance.player.isInv = false;
         for (int i = 0; i < 2; i++)
         {
-            float speed = map[i].speed;
             map[i].speed = speed;
         }
     }
@@ -97,15 +96,14 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator GetSpeedItemBuff(float val, float maxTime)
     {
+        float speed = map[0].speed;
         for (int i = 0; i < 2; i++)
         {
-            float speed = map[i].speed;
             map[i].speed = val;
         }
         yield return new WaitForSeconds(maxTime);
         for (int i = 0; i < 2; i++)
         {
-            float speed = map[i].speed;
             map[i].speed = speed;
         }
     }
