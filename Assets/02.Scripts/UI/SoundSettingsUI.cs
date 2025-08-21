@@ -8,9 +8,9 @@ public class SoundSettingsUI : MonoBehaviour
 
     void OnEnable()
     {
-        bgmSlider.value = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        bgmSlider.value = AudioManager.Instance.volume;
 
         bgmSlider.onValueChanged.RemoveAllListeners();
-        bgmSlider.onValueChanged.AddListener(SettingsManager.Instance.SetBGMVolume);
+        bgmSlider.onValueChanged.AddListener(AudioManager.Instance.SetVolume);
     }
 }
