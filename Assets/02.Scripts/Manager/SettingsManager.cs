@@ -47,8 +47,8 @@ public class SettingsManager : MonoBehaviour
     // BGM 볼륨을 변경하고 저장하는 함수
     public void SetBGMVolume(float volume)
     {
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat(BGMVolumeKey, volume);
+        //audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
+        //PlayerPrefs.SetFloat(BGMVolumeKey, volume);
     }
 
     public void SetSFXVolume(float volume)

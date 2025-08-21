@@ -26,6 +26,8 @@ public class AudioManager : Singleton<AudioManager>
     private AudioClip[] sounds;
     [SerializeField]
     private SoundKey[] soundsKey;
+    public float volume;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -35,6 +37,12 @@ public class AudioManager : Singleton<AudioManager>
             audioSource = GetComponent<AudioSource>();
         }
         audioSource.loop = true;
+    }
+
+    public void SetVolume(float vol)
+    {
+        volume = vol;
+        audioSource.volume = volume;
     }
 
     public void PlaySoundEffect(SoundKey key)
