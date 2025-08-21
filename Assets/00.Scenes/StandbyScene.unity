@@ -240,6 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db4f956337148440971130957f4e7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buyUI: {fileID: 0}
+  priceText: {fileID: 0}
 --- !u!1 &53113057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,6 +3406,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 70a5b2ffcfe7429419d05208858773da, type: 2}
+    - target: {fileID: 8703872773192268047, guid: 64c9d96775079344fac674889078804c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e7a71cca55ea2a748abed8cd2e5ab3fe, type: 2}
+    - target: {fileID: 8703872773192268047, guid: 64c9d96775079344fac674889078804c, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703872773192268047, guid: 64c9d96775079344fac674889078804c, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8703872773199547203, guid: 64c9d96775079344fac674889078804c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3508,6 +3522,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   maxHealth: 3
   coinEffectPrefab: {fileID: 0}
+  damageEffectPrefab: {fileID: 0}
   hair: {fileID: 863248227}
   hair1: {fileID: 863248226}
   hair2: {fileID: 863248225}
