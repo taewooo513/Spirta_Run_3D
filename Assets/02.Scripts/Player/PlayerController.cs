@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,135 +6,88 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
-    private Player player;
 
     public GameObject jumpEffectPrefab;
     public GameObject slideEffectPrefab;
-    public GameObject laneChangeEffectPrefab;
 
-    public Vector3 laneChangeEffectOffset = new Vector3(0, 0.5f, 4f);
-    public Vector3 jumpEffectOffset = new Vector3(0, 100f, 0f);
-
-Â  Â  // ì„¤ì • ê°’
-Â  Â  public float forwardSpeed = 0f;
+    // ¼³Á¤ °ª
+    public float forwardSpeed = 0f;
+    public float sideSpeed = 5f;
     public float jumpForce = 8f;
 
-Â  Â  // ë ˆì¸ ì´ë™ ê´€ë ¨ ë³€ìˆ˜
-Â  Â  private int currentLane = 0;
-    public float laneWidth = 4f;
-    public float laneChangeSpeed = 15f; // ë ˆì¸ì´ ë°”ë€ŒëŠ” ì†ë„
-    public float laneChangeEffectDelay = 0.15f; // ì´í™íŠ¸ ì§€ì—° ì‹œê°„
-
-Â  Â  // ìŠ¬ë¼ì´ë“œ ê°’
-Â  Â  private float originalColliderHeight;
+    // ½½¶óÀÌµå ½Ã º¯°æµÉ Äİ¶óÀÌ´õ °ª
+    private float originalColliderHeight;
     private Vector3 originalColliderCenter;
     public float slideColliderHeight = 0.9f;
     public Vector3 slideColliderCenter = new Vector3(0, 0.45f, 0);
     public float slideDuration = 1.0f;
 
-Â  Â  // ìƒíƒœ ë³€ìˆ˜
+    //½½¶óÀÌµå Áß Á¡ÇÁ ¸·±â À§ÇÑ isSliding
+    private bool isSliding = false;
 
-Â  Â  private bool isSliding = false;
-    private bool isJumping = false;
+    // ´õºí Á¡ÇÁ & Áö¸é Ã¼Å© º¯¼ö
+    public int maxJumps = 2; 
+    private int jumpCount;  
 
-    public int maxJumps = 2;
-    private int jumpCount;
-    private bool isGrounded;
-    public Transform groundCheck;
-    public float groundDistance = 0.1f;
+    private bool isGrounded; 
+    public Transform groundCheck; 
+    public float groundDistance = 0.4f; 
 
     void Start()
     {
+        // ½ÃÀÛÇÒ ¶§ °¢ ÄÄÆ÷³ÍÆ®¸¦ ÀÚµ¿À¸·Î Ã£¾Æ¿Í¼­ º¯¼ö¿¡ ÇÒ´ç
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+
+        // ¿ø·¡ Ä¸½¶ Äİ¶óÀÌ´õÀÇ ³ôÀÌ¿Í Áß½É À§Ä¡¸¦ ÀúÀå
         originalColliderHeight = capsuleCollider.height;
         originalColliderCenter = capsuleCollider.center;
 
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Slide");
     }
+
     void Update()
     {
         isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundDistance);
+
+        // ¶¥¿¡ ´ê¾ÆÀÖ´Ù¸é, Á¡ÇÁ È½¼ö¸¦ ÃÊ±âÈ­
         if (isGrounded)
         {
             jumpCount = 0;
         }
 
-        int previousLane = currentLane;
-        if (Input.GetKeyDown(KeyCode.A))
+        // Ç×»ó ¾ÕÀ¸·Î ÀÌµ¿
+        transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+
+        // ÁÂ¿ì ÀÌµ¿
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * sideSpeed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps && !isSliding)
         {
-            PlayLaneChangeEffect();
-            currentLane--;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            PlayLaneChangeEffect();
-            currentLane++;
-        }
-        //if (currentLane != previousLane)
-        //{
-        //    StartCoroutine(PlayLaneChangeEffect());
-        //}
-
-        currentLane = Mathf.Clamp(currentLane, -1, 1);
-
-        Vector3 targetPosition = transform.position;
-        targetPosition.x = currentLane * laneWidth;
-
-Â  Â  Â  Â  // í˜„ì¬ ìœ„ì¹˜ì—ì„œ ëª©í‘œ ìœ„ì¹˜ë¡œ ë¶€ë“œëŸ½ê²Œ ì´ë™ (Lerp ì‚¬ìš©)
-Â  Â  Â  Â  transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * laneChangeSpeed);
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
-        {
-            isJumping = true;
             Jump();
-            if(isGrounded == true)
-            {
-                isJumping = false;
-            }
         }
 
-Â  Â  Â  Â  // ìŠ¬ë¼ì´ë“œ ì…ë ¥ ì¡°ê±´
-
-Â  Â  Â  Â  if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && !isJumping/*&& isGrounded*/)
+        // ½½¶óÀÌµå ÀÔ·Â Á¶°Ç
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && !isSliding)
         {
             StartCoroutine(Slide());
         }
     }
+
     void Jump()
     {
-        isJumping = true;
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetTrigger("Jump");
+
+        // Á¡ÇÁ È½¼ö¸¦ 1 Áõ°¡½ÃÅµ´Ï´Ù.
         jumpCount++;
 
         if (jumpEffectPrefab != null)
         {
-            Vector3 effectPosition = transform.position + jumpEffectOffset;
             Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
-        }
-        isJumping = false;
-    }
-
-    //IEnumerator PlayLaneChangeEffect()
-    //{
-    //    yield return new WaitForSeconds(laneChangeEffectDelay);
-
-    //    if (laneChangeEffectPrefab != null)
-    //    {
-    //        Vector3 effectPosition = transform.position + laneChangeEffectOffset;
-    //        Instantiate(laneChangeEffectPrefab, effectPosition, Quaternion.identity);
-    //    }
-    //}
-
-    public void PlayLaneChangeEffect()
-    {
-        if (laneChangeEffectPrefab != null)
-        {
-            Instantiate(laneChangeEffectPrefab, transform.position, Quaternion.identity);
         }
     }
 
@@ -142,23 +95,31 @@ public class PlayerController : MonoBehaviour
     {
         isSliding = true;
         GameObject slideEffectInstance = null;
-        animator.SetTrigger("Slide");
 
+        // ½½¶óÀÌµå ½ÃÀÛ ½ÃÁ¡¿¡ ¾Ö´Ï¸ŞÀÌ¼Ç°ú ÀÌÆåÆ®¸¦ µ¿½Ã¿¡ ½ÇÇà
+        animator.SetTrigger("Slide");
         if (slideEffectPrefab != null)
         {
             slideEffectInstance = Instantiate(slideEffectPrefab, transform.position, Quaternion.identity);
         }
 
+        // ½½¶óÀÌµå¿ëÀ¸·Î Äİ¶óÀÌ´õ º¯°æ
         capsuleCollider.height = slideColliderHeight;
         capsuleCollider.center = slideColliderCenter;
+
+        // ÁöÁ¤µÈ ½Ã°£¸¸Å­ ½½¶óÀÌµå »óÅÂ¸¦ À¯Áö
         yield return new WaitForSeconds(slideDuration);
+
+        // ½½¶óÀÌµå°¡ ³¡³ª¸é Äİ¶óÀÌ´õ¸¦ ¿ø·¡´ë·Î º¹±¸
         capsuleCollider.height = originalColliderHeight;
         capsuleCollider.center = originalColliderCenter;
 
+        // ½½¶óÀÌµå°¡ ³¡³ª´Â ½ÃÁ¡¿¡ ÀÌÆåÆ®µµ ÇÔ²² ÆÄ±«
         if (slideEffectInstance != null)
         {
             Destroy(slideEffectInstance);
         }
+
         isSliding = false;
     }
 }

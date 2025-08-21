@@ -69,16 +69,26 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public void GetInvItem(float maxTime)
+    public void GetInvItem(float maxTime, float val)
     {
-        StartCoroutine(GetSpeedItemBuff(maxTime));
+        StartCoroutine(GetInvItemBuff(maxTime, val));
     }
 
-    IEnumerator GetSpeedItemBuff(float maxTime)
+    IEnumerator GetInvItemBuff(float maxTime,float val)
     {
-        isInv = true;
+        CharacterManager.Instance.player.isInv = true;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = val;
+        }
         yield return new WaitForSeconds(maxTime);
-        isInv = false;
+        CharacterManager.Instance.player.isInv = false;
+        for (int i = 0; i < 2; i++)
+        {
+            float speed = map[i].speed;
+            map[i].speed = speed;
+        }
     }
     public void GetSpeedUpItem(float val, float maxTime)
     {

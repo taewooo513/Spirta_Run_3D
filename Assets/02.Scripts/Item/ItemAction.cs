@@ -8,11 +8,13 @@ public partial class Item : MonoBehaviour // 여기서 버프사용시 함수만
     public void GetSpeedItem()
     {
         GameManager.Instance.GetSpeedUpItem(val, maxTime);
+        Destroy(gameObject);
     }
 
     public void GetInvItem()
     {
-        GameManager.Instance.GetInvItem(maxTime);
+        GameManager.Instance.GetInvItem(maxTime, val);
+        Destroy(gameObject);
     }
 
     public void GetCoinItem()
@@ -20,6 +22,11 @@ public partial class Item : MonoBehaviour // 여기서 버프사용시 함수만
         //AudioManager.Instance.PlayCoinSound();
         GameManager.Instance.score.AddScore((int)val);
         Destroy(gameObject);
+    }
+
+    public void GetHealItem()
+    {
+        CharacterManager.Instance.player.AddHeal();
     }
 
     public void GetTrophyItem()

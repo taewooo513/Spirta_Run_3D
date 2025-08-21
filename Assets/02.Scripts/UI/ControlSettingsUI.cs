@@ -20,7 +20,7 @@ public class ControlSettingsUI : MonoBehaviour
 
         // 리스너 연결
         sensitivitySlider.onValueChanged.RemoveAllListeners();
-        sensitivitySlider.onValueChanged.AddListener(SettingsManager.Instance.SetSensitivity);
+        //sensitivitySlider.onValueChanged.AddListener(SettingsManager.Instance.SetSensitivity);
 
         tiltControlToggle.onValueChanged.RemoveAllListeners();
         buttonControlToggle.onValueChanged.RemoveAllListeners();
