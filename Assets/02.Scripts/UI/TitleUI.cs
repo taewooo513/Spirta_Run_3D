@@ -49,7 +49,7 @@ public class TitleUI : MonoBehaviour
 
     public void OnClothesSetColor(int index)
     {
-        if (GameManager.Instance.hairDict[index].isUnlocked)
+        if (GameManager.Instance.clothesDict[index].isUnlocked)
         {
             CharacterManager.Instance.SetColorClothes(GameManager.Instance.hairDict[index].colorString);
         }
