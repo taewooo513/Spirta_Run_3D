@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="" />
+    <list default="true" id="dc32d3f2-c9e8-4ceb-84d6-ab119b2ad1d2" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spirta_Run_3D/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/StandbyScene.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
-    "git-widget-placeholder": "feat/UI",
+    "git-widget-placeholder": "feat/map",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -116,6 +120,7 @@
       <workItem from="1755573431090" duration="1264000" />
       <workItem from="1755574738154" duration="10637000" />
       <workItem from="1755590492197" duration="1664000" />
+      <workItem from="1755744544541" duration="1274000" />
     </task>
     <servers />
   </component>
