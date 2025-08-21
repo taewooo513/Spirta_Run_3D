@@ -8,9 +8,11 @@ public class MainGame : MonoBehaviour
     public GameObject airPlain;
     void Start()
     {
+        AudioManager.Instance.PlayLoopSound(SoundKey.eInGameBGM);
+
         PatternManager.Instance.StartGame();
         GameManager.Instance.GameStart();
-        Invoke("AirAdd", 10);
+        InvokeRepeating("AirAdd", 0, 10);
     }
 
     void AirAdd()

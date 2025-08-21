@@ -72,7 +72,7 @@ public class Airplane : Obstacle
     private void spawnItem()
     {
         Vector3 spawnPosition = transform.position;
-        spawnPosition.x = Random.Range(-6, 6);
+        spawnPosition.x = Random.Range(-1, 1) * 4;
         Instantiate(itemObject[Random.Range(0, itemObject.Length)], spawnPosition, Quaternion.identity);
     }
 

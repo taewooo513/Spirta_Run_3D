@@ -5,6 +5,10 @@ using UnityEngine;
 public class BackgroundMove : MonoBehaviour
 {
     private bool isMovingRight = true;
+    private void Start()
+    {
+        AudioManager.Instance.PlayLoopSound(SoundKey.eMainTitle);
+    }
     private void Update()
     {
         if(isMovingRight == true)

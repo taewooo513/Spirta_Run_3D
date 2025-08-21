@@ -15,6 +15,8 @@ public class TitleUI : MonoBehaviour
     private CustomizeType _type;
     private void Start()
     {
+        AudioManager.Instance.PlayLoopSound(SoundKey.eShopGBM);
+
         if (GameManager.Instance.hairDict.Count == 0)
         {
             GameManager.Instance.HairInit();

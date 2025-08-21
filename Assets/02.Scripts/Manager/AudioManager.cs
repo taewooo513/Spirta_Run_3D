@@ -5,11 +5,15 @@ using UnityEngine;
 
 public enum SoundKey
 {
+    eCoin,
+    eInGameBGM,
+    eJump,
+    eMainTitle,
+    eShopGBM,
     eCarCrashA,
     eCarCrashB,
     eCarCrashC,
-    eCoin,
-    SoundCount,
+    eCount,
     SoundErr
 }
 
@@ -41,7 +45,7 @@ public class AudioManager : Singleton<AudioManager>
             return;
         }
         int index = (int)key;
-        if (index >= sounds?.Length)
+        if (index <= sounds?.Length)
         {
             if (sounds[index] == null)
             {
@@ -60,27 +64,25 @@ public class AudioManager : Singleton<AudioManager>
 
     public void PlayLoopSound(SoundKey key)
     {
-        if (sounds == null)
-        {
-            Debug.LogWarning("No Sounds List");
-
-            return;
-        }
         int index = (int)key;
         if (sounds == null)
         {
             Debug.LogWarning("No Sounds List");
             return;
         }
-        if (index >= sounds?.Length)
+        Debug.Log("fda");
+        if (index <= sounds?.Length)
         {
-            if (coinSound == null)
+            Debug.Log("fda");
+
+            if (sounds[index] == null)
             {
                 Debug.LogWarning("Coin sound not assigned in AudioManager.");
             }
             else
             {
-                //audioSource.Play(sounds[index]);
+                audioSource.clip = sounds[index];
+                audioSource.Play();
             }
         }
         else
@@ -107,6 +109,6 @@ public class AudioManager : Singleton<AudioManager>
             return SoundKey.SoundErr;
         }
 
-        return (SoundKey)UnityEngine.Random.Range(0, val);
+        return (SoundKey)((int)minNumber + UnityEngine.Random.Range(0, val));
     }
 }
