@@ -3,7 +3,7 @@ using UnityEngine.Audio;
 
 public class SettingsManager : Singleton<SettingsManager>
 {
-    public AudioMixer audioMixer;
+    //public AudioMixer audioMixer;
 
     private const string BGMVolumeKey = "BGMVolume";
     private const string QualityKey = "QualityLevel";
@@ -38,7 +38,7 @@ public class SettingsManager : Singleton<SettingsManager>
 
     public void SetBGMVolume(float volume)
     {
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
+        //audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(BGMVolumeKey, volume);
     }
 
