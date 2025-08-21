@@ -19,7 +19,7 @@ namespace _02.Scripts.map
             }
             else
             {//
-                if (GameManager.Instance.map[1] == null)
+                if (GameManager.Instance.map[1] != null)
                 {
                     GameManager.Instance.map = new Map[2];
                     GameManager.Instance.map[0] = this;
