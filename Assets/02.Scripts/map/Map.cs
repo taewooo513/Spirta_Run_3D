@@ -12,24 +12,10 @@ namespace _02.Scripts.map
 
         private void Start()
         {
-            if (GameManager.Instance.map == null)
-            {
-                GameManager.Instance.map = new Map[2];
+            if (GameManager.Instance.map[0] == null)
                 GameManager.Instance.map[0] = this;
-            }
             else
-            {
-                if (GameManager.Instance.map[1] != null)
-                {
-                    GameManager.Instance.map = new Map[2];
-                    GameManager.Instance.map[0] = this;
-                }
-                else
-                {
-                    Debug.Log("bb");
-                    GameManager.Instance.map[1] = this;
-                }
-            }
+                GameManager.Instance.map[1] = this;
         }
         void Update()
         {
