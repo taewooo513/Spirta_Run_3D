@@ -12,10 +12,6 @@ public class UIManager : MonoBehaviour
     public ScoreUI scoreUI;
     public Image[] heartImages; // 하트(체력) 변수
 
-    private void Start()
-    {
-        //CharacterManager.Instance.player.uiManager = this;
-    }
     public void Stop()
     {
         Time.timeScale = 0; //시간 0으로 해서 멈춤
@@ -57,8 +53,8 @@ public class UIManager : MonoBehaviour
             if (gmMode)
             {
                 heartImages[i].color = Color.yellow;
-                heartImages[i+1].color = Color.yellow;
-                heartImages[i+2].color = Color.yellow;
+                heartImages[i + 1].color = Color.yellow;
+                heartImages[i + 2].color = Color.yellow;
                 return;
             }
             // 현재 체력보다 인덱스가 크면 (잃어버린 체력 칸이면) 하트를 끈다

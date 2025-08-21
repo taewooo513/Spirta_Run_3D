@@ -12,7 +12,7 @@ public class SettingsManager : Singleton<SettingsManager>
 
     //현재 설정 값 변수
     public float currentSensitivity;
-    public ControlType currentControlType; 
+    public ControlType currentControlType;
 
     public enum ControlType { Tilt, Button }
 

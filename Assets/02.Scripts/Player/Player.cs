@@ -6,13 +6,15 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     private int currentHealth;
 
+    public GameObject coinEffectPrefab;
+    public GameObject damageEffectPrefab;
+    //public GameObject laneChangeEffectPrefab;
+
     [Header("PlayerModel")]
     public SkinnedMeshRenderer hair;
     public SkinnedMeshRenderer hair1;
     public SkinnedMeshRenderer hair2;
     public SkinnedMeshRenderer clothes;
-
-    public GameObject coinEffectPrefab;
 
     float tim = 0;
 
@@ -40,6 +42,10 @@ public class Player : MonoBehaviour
         tim += Time.deltaTime;
         Debug.Log(tim);
         // 체력을 데미지만큼 감소시킵니다.
+        if (damageEffectPrefab != null)
+        {
+            Instantiate(damageEffectPrefab, transform.position, Quaternion.identity);
+        }
         currentHealth -= damageAmount;
 
         if (uiManager != null)
@@ -64,17 +70,14 @@ public class Player : MonoBehaviour
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                Debug.Log("아이템 획득: " + item.name); 
                 item.GetItem();
             }
-
             if (coinEffectPrefab != null)
             {
                 Instantiate(coinEffectPrefab, transform.position, Quaternion.identity);
             }
         }
     }
-
     private void GameOver()
     {
         Debug.Log("게임 오버!");
