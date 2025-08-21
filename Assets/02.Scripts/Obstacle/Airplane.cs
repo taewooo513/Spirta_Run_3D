@@ -1,3 +1,4 @@
+using _02.Scripts.map;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Airplane : Obstacle
 {
     public GameObject spawnObject;
     public AnimationCurve moveCurve;
+    public GameObject[] itemObject;
     public float upSpeed;
     private float startYPos;
     private float curTime;
@@ -15,6 +17,8 @@ public class Airplane : Obstacle
     {
         curTime = 0;
         startYPos = transform.position.y;
+        Invoke("DeleteThisObject", 10);
+        Invoke("spawnItem", 8);
     }
 
     void Update()
@@ -59,4 +63,18 @@ public class Airplane : Obstacle
             }
         }
     }
+
+    private void DeleteThisObject()
+    {
+        Destroy(gameObject);
+    } // Ä¿Âú
+
+    private void spawnItem()
+    {
+        Vector3 spawnPosition = transform.position;
+        spawnPosition.x = Random.Range(-6, 6);
+        Instantiate(itemObject[Random.Range(0, itemObject.Length)], spawnPosition, Quaternion.identity);
+    }
+
+
 }

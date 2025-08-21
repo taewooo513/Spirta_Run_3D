@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if(isInv == true)
+        if (isInv == true)
         {
             Debug.Log("무적 아이템");
             return;
