@@ -20,4 +20,9 @@ public class TitleUI : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+
+    public void GameReady()
+    {
+        SceneManager.LoadScene("StandbyScene");
+    }
 }

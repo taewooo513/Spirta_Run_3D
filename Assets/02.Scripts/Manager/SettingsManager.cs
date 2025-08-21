@@ -1,59 +1,63 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SettingsManager : MonoBehaviour
+public class SettingsManager : Singleton<SettingsManager>
 {
-    public static SettingsManager Instance { get; private set; }
-
     public AudioMixer audioMixer;
 
-    private const string ControlTypeKey = "ControlType";
     private const string BGMVolumeKey = "BGMVolume";
-    private const string SFXVolumeKey = "SFXVolume";
+    private const string QualityKey = "QualityLevel";
+    private const string SensitivityKey = "Sensitivity";
+    private const string ControlTypeKey = "ControlType";
+
+    //현재 설정 값 변수
+    public float currentSensitivity;
+    public ControlType currentControlType; 
 
     public enum ControlType { Tilt, Button }
-    public ControlType currentControlType;
 
-    // 게임이 시작될 때 가장 먼저 호출되는 함수
-    void Awake()
+    private void Start()
     {
-        // 싱글턴 패턴 설정
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         LoadSettings();
     }
 
     private void LoadSettings()
     {
-        currentControlType = (ControlType)PlayerPrefs.GetInt(ControlTypeKey, 0);
-
+        // 사운드 볼륨 불러오기
         SetBGMVolume(PlayerPrefs.GetFloat(BGMVolumeKey, 1f));
-        SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 1f));
-    }
-    public void SetControlType(int controlIndex)
-    {
-        currentControlType = (ControlType)controlIndex;
-        PlayerPrefs.SetInt(ControlTypeKey, controlIndex);
+
+        // 그래픽 품질 불러오기
+        SetGraphicsQuality(PlayerPrefs.GetInt(QualityKey, 1));
+
+        // 조작 민감도 불러오기
+        currentSensitivity = PlayerPrefs.GetFloat(SensitivityKey, 10f);
+
+        // 조작 방식 불러오기
+        currentControlType = (ControlType)PlayerPrefs.GetInt(ControlTypeKey, 0); // 0 = Tilt
     }
 
-    // BGM 볼륨을 변경하고 저장하는 함수
     public void SetBGMVolume(float volume)
     {
         audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat(BGMVolumeKey, volume);
     }
 
-    public void SetSFXVolume(float volume)
+    public void SetGraphicsQuality(int index)
     {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat(SFXVolumeKey, volume);
+        QualitySettings.SetQualityLevel(index);
+        PlayerPrefs.SetInt(QualityKey, index);
+    }
+
+    public void SetSensitivity(float sensitivity)
+    {
+        currentSensitivity = sensitivity;
+        PlayerPrefs.SetFloat(SensitivityKey, sensitivity);
+    }
+
+    // 조작 방식을 변경하는 함수 (추가된 부분)
+    public void SetControlType(int index)
+    {
+        currentControlType = (ControlType)index;
+        PlayerPrefs.SetInt(ControlTypeKey, index);
     }
 }
