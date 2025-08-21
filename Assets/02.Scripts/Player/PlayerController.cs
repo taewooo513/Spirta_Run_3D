@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public GameObject slideEffectPrefab;
 
     // 설정 값
-    public float forwardSpeed = 8f;
+    public float forwardSpeed = 0f;
+    public float sideSpeed = 5f;
     public float jumpForce = 8f;
 
     // 슬라이드 값
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     // 상태 변수
     private bool isSliding = false;
 
-    // 더블 점프 & 지면 체크 변수
     public int maxJumps = 2;
     private int jumpCount;
 
@@ -43,12 +43,6 @@ public class PlayerController : MonoBehaviour
 
         animator.ResetTrigger("Jump");
         animator.ResetTrigger("Slide");
-
-        // 자이로 센서 활성화 (필요하다면)
-        if (SystemInfo.supportsGyroscope)
-        {
-            Input.gyro.enabled = true;
-        }
     }
 
     void Update()
@@ -63,22 +57,8 @@ public class PlayerController : MonoBehaviour
         // 항상 앞으로 이동
         transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
 
-        // 조작 방식 선택 및 민감도 적용
-        if (SettingsManager.Instance.currentControlType == SettingsManager.ControlType.Tilt)
-        {
-            // 기울기(자이로) 조작
-            if (Input.gyro.enabled)
-            {
-                float gyroInput = Input.gyro.gravity.x;
-                Vector3 moveDirection = new Vector3(gyroInput, 0, 0);
-                transform.Translate(moveDirection * SettingsManager.Instance.currentSensitivity * Time.deltaTime);
-            }
-        }
-        else // 버튼/키 조작
-        {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector3.right * horizontalInput * SettingsManager.Instance.currentSensitivity * Time.deltaTime);
-        }
+        float horizontalInput = Input.GetAxis("Horizontal"); 
+        transform.Translate(Vector3.right * horizontalInput * sideSpeed * Time.deltaTime);
 
         // 점프 입력 조건
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps && !isSliding)

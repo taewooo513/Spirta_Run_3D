@@ -289,10 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f9018bd342005459a36b350fe280cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgmSlider: {fileID: 0}
-  sensitivitySlider: {fileID: 0}
-  tiltControlToggle: {fileID: 0}
-  buttonControlToggle: {fileID: 0}
 --- !u!1 &34846671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1684,6 @@ GameObject:
   - component: {fileID: 455434194}
   - component: {fileID: 455434197}
   - component: {fileID: 455434196}
-  - component: {fileID: 455434198}
   m_Layer: 0
   m_Name: ControlSetting
   m_TagString: Untagged
@@ -1754,21 +1749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455434193}
   m_CullTransparentMesh: 1
---- !u!114 &455434198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455434193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9addac77392592647a0d86999c5250ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivitySlider: {fileID: 0}
-  tiltControlToggle: {fileID: 0}
-  buttonControlToggle: {fileID: 0}
 --- !u!1 &469066269
 GameObject:
   m_ObjectHideFlags: 0
