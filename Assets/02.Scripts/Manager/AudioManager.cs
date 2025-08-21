@@ -34,6 +34,7 @@ public class AudioManager : Singleton<AudioManager>
             this.gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
         }
+        audioSource.loop = true;
     }
 
     public void PlaySoundEffect(SoundKey key)
