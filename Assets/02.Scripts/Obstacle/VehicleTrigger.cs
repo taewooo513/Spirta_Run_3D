@@ -8,8 +8,8 @@ public class VehicleTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayCarCrashSound();
             CharacterManager.Instance.player.TakeDamage(1);
-            //AudioManager.Instance.PlayCarCrashSound();
             Destroy(this.transform.parent.gameObject);
         }
     }

@@ -3147,6 +3147,60 @@ Transform:
   - {fileID: 253545684}
   m_Father: {fileID: 2068202088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1568786683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568786685}
+  - component: {fileID: 1568786684}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1568786684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568786683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897f35928470db94587ecf62a124db6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSound: {fileID: 0}
+  carCrashSound: []
+  sounds:
+  - {fileID: 8300000, guid: 0b5de865586844050b285d4a3fd6b033, type: 3}
+  - {fileID: 8300000, guid: d2ee993ceff49494e82733130b8d940e, type: 3}
+  - {fileID: 8300000, guid: c155828b70c1b4c8bab378079dc99c56, type: 3}
+  - {fileID: 8300000, guid: fecae2a77cef6694caa4dd7624c09ef9, type: 3}
+  - {fileID: 8300000, guid: ac81e521cc4fffd4cb560d4ddc70d306, type: 3}
+  - {fileID: 0}
+  soundsKey: 
+--- !u!4 &1568786685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568786683}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6674963, y: -2.296757, z: 6.036502}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1624673786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,3 +3977,4 @@ SceneRoots:
   - {fileID: 1066540247}
   - {fileID: 15334242}
   - {fileID: 1227050289}
+  - {fileID: 1568786685}
