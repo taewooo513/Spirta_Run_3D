@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public int maxHealth = 3;
     private int currentHealth;
 
+    public GameObject coinEffectPrefab;
+
     [Header("PlayerModel")]
     public SkinnedMeshRenderer hair;
     public SkinnedMeshRenderer hair1;
@@ -62,8 +64,11 @@ public class Player : MonoBehaviour
             Item item = other.GetComponent<Item>();
             if (item != null)
             {
-                Debug.Log("æ∆¿Ã≈€ »πµÊ: " + item.name); 
                 item.GetItem();
+            }
+            if (coinEffectPrefab != null)
+            {
+                Instantiate(coinEffectPrefab, transform.position, Quaternion.identity);
             }
         }
     }

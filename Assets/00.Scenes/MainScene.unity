@@ -30928,6 +30928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 762700377}
   maxHealth: 3
+  coinEffectPrefab: {fileID: 2353600328335836179, guid: ceec7516237b4104b94300043ca39784, type: 3}
   hair: {fileID: 1555645088}
   hair1: {fileID: 1313560180}
   hair2: {fileID: 347208299}
