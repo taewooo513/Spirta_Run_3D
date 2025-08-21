@@ -28807,7 +28807,7 @@ GameObject:
   - component: {fileID: 1866258406}
   - component: {fileID: 1866258405}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: VideoScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28827,10 +28827,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 628197993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1866258405
 MonoBehaviour:
@@ -31017,9 +31017,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpEffectPrefab: {fileID: 2360655870356088562, guid: 57a776ff377f3c44e8403e2067a4d41f, type: 3}
   slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
+  laneChangeEffectPrefab: {fileID: 0}
+  laneChangeEffectOffset: {x: 0, y: 0.5, z: 4}
+  jumpEffectOffset: {x: 0, y: 100, z: 0}
   forwardSpeed: 0
-  sideSpeed: 5
   jumpForce: 200
+  laneWidth: 4
+  laneChangeSpeed: 15
+  laneChangeEffectDelay: 0.15
   slideColliderHeight: 0.9
   slideColliderCenter: {x: 0, y: 0.45, z: 0}
   slideDuration: 1
