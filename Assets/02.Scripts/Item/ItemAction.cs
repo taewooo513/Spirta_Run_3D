@@ -27,6 +27,7 @@ public partial class Item : MonoBehaviour // 여기서 버프사용시 함수만
     public void GetHealItem()
     {
         CharacterManager.Instance.player.AddHeal();
+        Destroy(gameObject);
     }
 
     public void GetTrophyItem()
