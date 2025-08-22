@@ -107,7 +107,7 @@ public class TitleUI : MonoBehaviour
 
     public void OnClickShopButton()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("ShopScene");
     }
 
     public void OnClickTitleButton()
