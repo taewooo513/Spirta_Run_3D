@@ -30843,7 +30843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpEffectPrefab: {fileID: 2360655870356088562, guid: 57a776ff377f3c44e8403e2067a4d41f, type: 3}
   slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
-  laneChangeEffectPrefab: {fileID: 0}
+  laneChangeEffectPrefab: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
   laneChangeEffectOffset: {x: 0, y: 0.5, z: 4}
   jumpEffectOffset: {x: 0, y: 100, z: 0}
   forwardSpeed: 0
