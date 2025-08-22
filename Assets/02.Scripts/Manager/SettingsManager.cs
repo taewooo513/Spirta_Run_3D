@@ -9,9 +9,8 @@ public class SettingsManager : MonoBehaviour
 
     private const string ControlTypeKey = "ControlType";
     private const string BGMVolumeKey = "BGMVolume";
-    private const string SFXVolumeKey = "SFXVolume";
 
-    public enum ControlType { Tilt, Button }
+    public enum ControlType { Keyboard, Phone }
     public ControlType currentControlType;
 
     // 게임이 시작될 때 가장 먼저 호출되는 함수
@@ -36,7 +35,6 @@ public class SettingsManager : MonoBehaviour
         currentControlType = (ControlType)PlayerPrefs.GetInt(ControlTypeKey, 0);
 
         SetBGMVolume(PlayerPrefs.GetFloat(BGMVolumeKey, 1f));
-        SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 1f));
     }
     public void SetControlType(int controlIndex)
     {
@@ -51,9 +49,9 @@ public class SettingsManager : MonoBehaviour
         //PlayerPrefs.SetFloat(BGMVolumeKey, volume);
     }
 
-    public void SetSFXVolume(float volume)
-    {
-        audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat(SFXVolumeKey, volume);
-    }
+    //public void SetSFXVolume(float volume)
+    //{
+    //    audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+    //    PlayerPrefs.SetFloat(SFXVolumeKey, volume);
+    //}
 }

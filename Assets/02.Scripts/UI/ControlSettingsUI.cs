@@ -14,7 +14,7 @@ public class ControlSettingsUI : MonoBehaviour
         sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity", 10f);
 
         // 조작 방식 토글 값 설정
-        bool isTilt = SettingsManager.Instance.currentControlType == SettingsManager.ControlType.Tilt;
+        bool isTilt = SettingsManager.Instance.currentControlType == SettingsManager.ControlType.Phone;
         tiltControlToggle.isOn = isTilt;
         buttonControlToggle.isOn = !isTilt;
 
@@ -24,7 +24,7 @@ public class ControlSettingsUI : MonoBehaviour
 
         tiltControlToggle.onValueChanged.RemoveAllListeners();
         buttonControlToggle.onValueChanged.RemoveAllListeners();
-        tiltControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) SettingsManager.Instance.SetControlType(0); }); // 0 = Tilt
-        buttonControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) SettingsManager.Instance.SetControlType(1); }); // 1 = Button
+        tiltControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) SettingsManager.Instance.SetControlType(0); }); // 0 = Phone
+        buttonControlToggle.onValueChanged.AddListener((isOn) => { if (isOn) SettingsManager.Instance.SetControlType(1); }); // 1 = Keyboard
     }
 }

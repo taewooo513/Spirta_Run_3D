@@ -27,10 +27,9 @@ public class SettingsUI : MonoBehaviour
         bgmSlider.onValueChanged.RemoveAllListeners();
         sfxSlider.onValueChanged.RemoveAllListeners();
         bgmSlider.onValueChanged.AddListener(SettingsManager.Instance.SetBGMVolume);
-        sfxSlider.onValueChanged.AddListener(SettingsManager.Instance.SetSFXVolume);
 
         // 조작 방식 토글
-        bool isTilt = SettingsManager.Instance.currentControlType == SettingsManager.ControlType.Tilt;
+        bool isTilt = SettingsManager.Instance.currentControlType == SettingsManager.ControlType.Phone;
         tiltControlToggle.isOn = isTilt;
         buttonControlToggle.isOn = !isTilt;
 

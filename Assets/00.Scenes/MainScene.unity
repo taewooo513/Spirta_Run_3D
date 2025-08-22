@@ -17929,6 +17929,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1167745750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167745752}
+  - component: {fileID: 1167745751}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1167745751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167745750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25156591f161d1648a68a6bea892277a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
+  currentControlType: 1
+--- !u!4 &1167745752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167745750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177949946
 GameObject:
   m_ObjectHideFlags: 0
@@ -30845,18 +30891,16 @@ MonoBehaviour:
   slideEffectPrefab: {fileID: 904662820145583817, guid: 019faff12646bd8438ea56e8e7861fd8, type: 3}
   laneChangeEffectPrefab: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
   laneChangeEffectOffset: {x: 0, y: 0.5, z: 4}
-  jumpEffectOffset: {x: 0, y: 100, z: 0}
-  forwardSpeed: 0
   jumpForce: 200
   laneWidth: 4
   laneChangeSpeed: 15
-  laneChangeEffectDelay: 0.15
+  slideDuration: 1
   slideColliderHeight: 0.9
   slideColliderCenter: {x: 0, y: 0.45, z: 0}
-  slideDuration: 1
   maxJumps: 1
   groundCheck: {fileID: 991836728}
   groundDistance: 0.4
+  minSwipeDistance: 50
 --- !u!136 &1983417682
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33358,3 +33402,4 @@ SceneRoots:
   - {fileID: 181966060}
   - {fileID: 1303236997}
   - {fileID: 762700381}
+  - {fileID: 1167745752}

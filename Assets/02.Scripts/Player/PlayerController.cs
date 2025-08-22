@@ -1,46 +1,44 @@
 ﻿using System.Collections;
 using UnityEngine;
+
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
-    private Player player;
 
+    [Header("VFX Prefabs")]
     public GameObject jumpEffectPrefab;
     public GameObject slideEffectPrefab;
-    public GameObject laneChangeEffectPrefab;
 
-    public Vector3 laneChangeEffectOffset = new Vector3(0, 0.5f, 4f);
-    public Vector3 jumpEffectOffset = new Vector3(0, 100f, 0f);
-
-    // 설정 값
-    public float forwardSpeed = 0f;
+    //설정 값
+    [Header("Movement Settings")]
     public float jumpForce = 8f;
+    public float tiltSensitivity = 20f; // 기울기 민감도
 
-    // 레인 이동 관련 변수
-    private int currentLane = 0;
-    public float laneWidth = 4f;
-    public float laneChangeSpeed = 15f; // 레인이 바뀌는 속도
-    public float laneChangeEffectDelay = 0.15f; // 이펙트 지연 시간
-
-    // 슬라이드 값
-    private float originalColliderHeight;
-    private Vector3 originalColliderCenter;
+    [Header("Slide Settings")]
+    public float slideDuration = 1.0f;
     public float slideColliderHeight = 0.9f;
     public Vector3 slideColliderCenter = new Vector3(0, 0.45f, 0);
-    public float slideDuration = 1.0f;
 
-    // 상태 변수
+    //상태 변수 ---
+    private bool isSliding = false;
+    private Coroutine slideCoroutine;
 
-    private bool isSliding = false;
-    private bool isJumping = false;
-
+    //더블 점프 & 지면 체크 변수
+    [Header("Jump Settings")]
     public int maxJumps = 2;
     private int jumpCount;
     private bool isGrounded;
     public Transform groundCheck;
     public float groundDistance = 0.1f;
+
+    private Vector2 startTouchPosition;
+    private Vector2 endTouchPosition;
+    public float minSwipeDistance = 50f;
+
+    private float originalColliderHeight;
+    private Vector3 originalColliderCenter;
 
     void Start()
     {
@@ -50,91 +48,77 @@ public class PlayerController : MonoBehaviour
         originalColliderHeight = capsuleCollider.height;
         originalColliderCenter = capsuleCollider.center;
 
-        animator.ResetTrigger("Jump");
-        animator.ResetTrigger("Slide");
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+        }
     }
+
     void Update()
     {
+        // 지면 체크 및 점프 횟수 초기화
         isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundDistance);
         if (isGrounded)
         {
             jumpCount = 0;
         }
 
-        int previousLane = currentLane;
-        if (Input.GetKeyDown(KeyCode.A))
+        HandlePhoneInput();
+    }
+
+    // 폰 조작 (기울기 + 스와이프)
+    private void HandlePhoneInput()
+    {
+        // 기울기로 좌우 이동
+        if (Input.gyro.enabled)
         {
-            PlayLaneChangeEffect();
-            currentLane--;
+            float gyroInput = Input.gyro.gravity.x;
+            transform.Translate(new Vector3(gyroInput, 0, 0) * tiltSensitivity * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+
+        // 스와이프로 점프/슬라이드
+        if (Input.touchCount > 0)
         {
-            PlayLaneChangeEffect();
-            currentLane++;
-        }
-        //if (currentLane != previousLane)
-        //{
-        //    StartCoroutine(PlayLaneChangeEffect());
-        //}
-
-        currentLane = Mathf.Clamp(currentLane, -1, 1);
-
-        Vector3 targetPosition = transform.position;
-        targetPosition.x = currentLane * laneWidth;
-
-        // 현재 위치에서 목표 위치로 부드럽게 이동 (Lerp 사용)
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * laneChangeSpeed);
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
-        {
-            isJumping = true;
-            Jump();
-            if (isGrounded == true)
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began) startTouchPosition = touch.position;
+            else if (touch.phase == TouchPhase.Ended)
             {
-                isJumping = false;
+                endTouchPosition = touch.position;
+                CheckSwipeForActions();
             }
         }
+    }
 
-        // 슬라이드 입력 조건
+    // 스와이프 (점프/슬라이드만)
+    private void CheckSwipeForActions()
+    {
+        Vector2 swipeDelta = endTouchPosition - startTouchPosition;
+        if (swipeDelta.magnitude < minSwipeDistance) return;
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding && !isJumping/*&& isGrounded*/)
+        if (Mathf.Abs(swipeDelta.y) > Mathf.Abs(swipeDelta.x))
         {
-            StartCoroutine(Slide());
+            if (swipeDelta.y > 0 && jumpCount < maxJumps) Jump();
+            else if (swipeDelta.y < 0 && isGrounded && !isSliding)
+            {
+                slideCoroutine = StartCoroutine(Slide());
+            }
         }
     }
+
     void Jump()
     {
-        isJumping = true;
+        if (isSliding)
+        {
+            if (slideCoroutine != null) StopCoroutine(slideCoroutine);
+            isSliding = false;
+            capsuleCollider.height = originalColliderHeight;
+            capsuleCollider.center = originalColliderCenter;
+        }
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         animator.SetTrigger("Jump");
         jumpCount++;
-
-        if (jumpEffectPrefab != null)
-        {
-            Vector3 effectPosition = transform.position + jumpEffectOffset;
-            Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
-        }
-        isJumping = false;
-    }
-
-    //IEnumerator PlayLaneChangeEffect()
-    //{
-    //    yield return new WaitForSeconds(laneChangeEffectDelay);
-
-    //    if (laneChangeEffectPrefab != null)
-    //    {
-    //        Vector3 effectPosition = transform.position + laneChangeEffectOffset;
-    //        Instantiate(laneChangeEffectPrefab, effectPosition, Quaternion.identity);
-    //    }
-    //}
-
-    public void PlayLaneChangeEffect()
-    {
-        if (laneChangeEffectPrefab != null)
-        {
-            Instantiate(laneChangeEffectPrefab, transform.position, Quaternion.identity);
-        }
+        if (jumpEffectPrefab != null) Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
     }
 
     IEnumerator Slide()
@@ -142,22 +126,13 @@ public class PlayerController : MonoBehaviour
         isSliding = true;
         GameObject slideEffectInstance = null;
         animator.SetTrigger("Slide");
-
-        if (slideEffectPrefab != null)
-        {
-            slideEffectInstance = Instantiate(slideEffectPrefab, transform.position, Quaternion.identity);
-        }
-
+        if (slideEffectPrefab != null) slideEffectInstance = Instantiate(slideEffectPrefab, transform.position, Quaternion.identity);
         capsuleCollider.height = slideColliderHeight;
         capsuleCollider.center = slideColliderCenter;
         yield return new WaitForSeconds(slideDuration);
         capsuleCollider.height = originalColliderHeight;
         capsuleCollider.center = originalColliderCenter;
-
-        if (slideEffectInstance != null)
-        {
-            Destroy(slideEffectInstance);
-        }
+        if (slideEffectInstance != null) Destroy(slideEffectInstance);
         isSliding = false;
     }
 }
